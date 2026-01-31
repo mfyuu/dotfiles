@@ -1,8 +1,7 @@
 [user]
 	name = mfyuu
 	email = 83203852+mfyuu@users.noreply.github.com
-[include]
-	path = /Users/mfyuu/.gitconfig.local
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF+zJB91Fifv36IetC+AhWcBE+a9poI/U+A6MlLfABoa
 [gpg]
 	format = ssh
 [gpg "ssh"]
