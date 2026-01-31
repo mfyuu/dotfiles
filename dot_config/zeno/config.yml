@@ -55,9 +55,27 @@ snippets:
     context:
       lbuffer: "^git "
 
+  - name: git push-u
+    keyword: push-u
+    snippet: push -u origin HEAD
+    context:
+      lbuffer: "^git "
+
   - name: git delete
     keyword: delete
     snippet: branch | fzf | xargs git branch -D
+    context:
+      lbuffer: "^git "
+
+  - name: git amend
+    keyword: amend
+    snippet: commit --amend
+    context:
+      lbuffer: "^git "
+
+  - name: git amend-n
+    keyword: amend-n
+    snippet: commit --amend --no-edit
     context:
       lbuffer: "^git "
 
