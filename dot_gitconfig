@@ -1,0 +1,15 @@
+[user]
+	name = mfyuu
+	email = 83203852+mfyuu@users.noreply.github.com
+[include]
+	path = /Users/mfyuu/.gitconfig.local
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true

@@ -1,0 +1,49 @@
+add_newline = false
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$aws\
+$git_commit\
+$character
+"""
+
+[character]
+success_symbol = "[➜](bold fg:#50fa7b)"
+error_symbol = "[➜](bold fg:#ff5555)"
+
+[directory]
+style = "bold fg:#8be9fd"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "bold fg:#bd93f9"
+
+[git_status]
+format = "[$all_status$ahead_behind ]($style)"
+staged = "[+${count}](fg:#50fa7b)"
+modified = "[!${count}](fg:#f1fa8c)"
+ahead = "[⇡${count}](fg:#50fa7b)"
+behind = "[⇣${count}](fg:#ff5555)"
+diverged = "[⇡${ahead_count}⇣:${behind_count}](fg:#ff5555)"
+conflicted = ""
+untracked = "[?${count}](fg:#f1fa8c)"
+stashed = ""
+renamed = ""
+deleted = ""
+
+[nodejs]
+format = '[node\[$version\]]($style) '
+style = "fg:#50fa7b"
+
+[aws]
+format = '[$symbol AWS\[$profile\] ]($style)'
+style = "bold fg:#ffcb6b"
+symbol = "☁️"
+
+[git_commit]
+format = "[\n]()"
+only_detached = false
+tag_disabled = true
