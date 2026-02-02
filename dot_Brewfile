@@ -1,5 +1,6 @@
 tap "dimentium/autoraise"
 brew "bat"
+brew "create-dmg"
 brew "direnv"
 brew "eza"
 brew "fd"
