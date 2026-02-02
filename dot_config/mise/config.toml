@@ -47,7 +47,7 @@ description = "claude sync mcp.json"
 run = "claude --mcp-config=.mcp.json"
 
 [tasks.check-memory-usage]
-description = "check-memory-usage"
+description = "check memory usage"
 run = '''
 ps -axo pid,%cpu,%mem,rss,comm | sort -nrk 4 | head -n 10 | awk '{printf "%-6s %-6s %-6s %6.1fMB %s\n",$1,$2,$3,$4/1024,$5}'
 sysctl vm.swapusage
@@ -56,6 +56,10 @@ sysctl vm.swapusage
 [tasks.copy-current-branch]
 description = "copy-current-branch"
 run = "git branch --show-current | pbcopy"
+
+[tasks.get-mac-address]
+description = "get Mac Address"
+run = "networksetup -getmacaddress en0"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
