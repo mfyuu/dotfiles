@@ -108,6 +108,22 @@ alias tree='eza -T -a -I "node_modules|.git|.cache" --icons'
 # alias diffcopy="(echo '```diff'; git diff --no-color; echo '```') | pbcopy"
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
+eval "$(gibo completion zsh)"
+# gibo dump をfzfで複数選択 → .gitignore に追記
+function gibo() {
+    if [[ "$1" == "dump" && -z "$2" ]]; then
+        local selected
+        selected=$(command gibo list | sed 's/=== .* ===//g' | tr -s ' \t\n' '\n' | grep -v '^$' | \
+            fzf -m --preview 'gibo dump {}')
+        [[ -z "$selected" ]] && return
+
+        echo "$selected" | xargs gibo dump >> .gitignore
+        echo "$ gibo dump ${selected//$'\n'/ } >> .gitignore"
+        echo "✓ Done"
+    else
+        command gibo "$@"
+    fi
+}
 # Prefer uv-managed Python (must be after mise)
 export PATH="$HOME/.local/bin:$PATH"
 # curl https://raw.githubusercontent.com/azu/ni.zsh/main/ni.zsh >ni.zsh
