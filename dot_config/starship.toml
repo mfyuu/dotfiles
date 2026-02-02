@@ -28,8 +28,9 @@ ${custom.git_line_break}\
 $character"""
 
 [character]
-success_symbol = "[➜](bold fg:#50fa7b)"
-error_symbol = "[➜](bold fg:#ff5555)"
+success_symbol = "[❯](red)[❯](yellow)[❯](green)"
+error_symbol = "[❯](red)[❯](red)[❯](red)"
+vicmd_symbol = "[❮](green)[❮](yellow)[❮](red)"
 
 [aws]
 symbol = " "
