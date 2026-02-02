@@ -61,6 +61,10 @@ run = "git branch --show-current | pbcopy"
 description = "get Mac Address"
 run = "networksetup -getmacaddress en0"
 
+[tasks.brew-dump-global]
+description = "brew bundle dump --global"
+run = "brew bundle dump -f --global"
+
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
 
