@@ -6,7 +6,7 @@ $git_branch\
 $git_status\
 $nodejs\
 $aws\
-$git_commit\
+${custom.git_line_break}\
 $character
 """
 
@@ -43,7 +43,7 @@ format = '[$symbol AWS\[$profile\] ]($style)'
 style = "bold fg:#ffcb6b"
 symbol = "☁️"
 
-[git_commit]
-format = "[\n]()"
-only_detached = false
-tag_disabled = true
+[custom.git_line_break]
+command = "printf 'x'"
+when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+format = "\n"
