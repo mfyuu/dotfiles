@@ -4,14 +4,8 @@ My dotfiles managed by chezmoi and pass.
 
 ## Setup
 
-1. Install chezmoi
+Install chezmoi & Apply dotfiles
 
 ```bash
-sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin
-```
-
-2. Apply dotfiles
-
-```bash
-chezmoi init --apply <github-username>
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
 ```
