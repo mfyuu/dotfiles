@@ -8,4 +8,9 @@ if ! command -v brew &> /dev/null; then
 fi
 # Install packages from Brewfile
 brew bundle --global
+
+# Install mise tools (deno, node, bun, etc.)
+# Required for zeno.zsh (depends on Deno)
+eval "$(mise activate zsh)"
+mise install --yes
 {{ end }}
