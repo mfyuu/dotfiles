@@ -126,6 +126,7 @@ function gibo() {
 }
 # Prefer uv-managed Python (must be after mise)
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 # curl https://raw.githubusercontent.com/azu/ni.zsh/main/ni.zsh >ni.zsh
 # source ni.zsh
 # # .zshrc
