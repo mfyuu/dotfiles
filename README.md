@@ -2,6 +2,21 @@
 
 My dotfiles managed by chezmoi and pass.
 
+## Requirements (macOS)
+
+Xcode Command Line Tools is required (`chezmoi init` needs git).
+
+```bash
+xcode-select -p
+# /Library/Developer/CommandLineTools
+```
+
+If not installed, run:
+
+```bash
+xcode-select --install
+```
+
 ## Setup
 
 Install chezmoi & Apply dotfiles
