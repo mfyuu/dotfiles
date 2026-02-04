@@ -67,7 +67,7 @@ run = "brew bundle dump -f --global"
 
 [tasks.ssh-connect-github]
 description = "ssh connect github"
-run = "ssh -T git@github.com"
+run = "ssh -T git@github.com || true"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
