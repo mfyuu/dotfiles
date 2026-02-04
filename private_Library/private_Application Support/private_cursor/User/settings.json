@@ -112,5 +112,6 @@
   "claudeCode.preferredLocation": "panel",
   // リガチャ
   "editor.fontLigatures": true,
-  "json.schemaDownload.enable": true
+  "json.schemaDownload.enable": true,
+  "explorer.confirmDelete": false
 }
