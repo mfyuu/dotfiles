@@ -139,6 +139,30 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 # zoxide
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
+eval "$(git wt --init zsh)"
 
 # fast-syntax-highlighting（zsh-syntax-highlighting の代替）
 zinit light zdharma-continuum/fast-syntax-highlighting
+
+# Aliases for git-wt
+git() {
+  if [[ "$1" == "wt" ]]; then
+    shift
+    if [[ $# -eq 0 ]]; then
+      local dir=$(command git-wt | fzf | awk '{print $1}')
+      if [[ -n "$dir" ]]; then
+        cd "$dir"
+      fi
+    else
+      command git-wt "$@"
+    fi
+  else
+    command git "$@"
+  fi
+}
+
+# Completion settings for git-wt (git worktree manager)
+# Register 'wt' as a git subcommand with zstyle for zsh's completion system.
+# This allows `git wt` + tab to insert a space, followed by zeno's completion.
+# (Manual configuration is required as there is no auto-completion like `mise activate zsh`).
+zstyle ':completion:*:*:git:*' user-commands wt:'worktree manager'

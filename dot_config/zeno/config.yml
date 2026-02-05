@@ -11,6 +11,12 @@ completions:
     sourceCommand: 'COMP_LINE="${LBUFFER}${RBUFFER}" COMP_POINT=${#LBUFFER} aws_completer 2>/dev/null'
     options:
       --prompt: "'aws > '"
+  - name: git wt
+    patterns:
+      - "^git wt $"
+    sourceCommand: "git-wt | awk '{print $1}'"
+    options:
+      --prompt: "'worktree > '"
 
 snippets:
   # git
