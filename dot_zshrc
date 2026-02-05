@@ -154,6 +154,15 @@ git() {
       if [[ -n "$dir" ]]; then
         cd "$dir"
       fi
+    elif [[ "$1" == "-a" ]]; then
+      # -a: Add worktree by selecting branch with fzf
+      git fetch --all --prune
+      local branch=$(git branch -a --format='%(refname:short)' | \
+        sed 's|^origin/||' | sort -u | grep -v '^HEAD$' | \
+        fzf --preview 'git log --oneline -10 {} --')
+      if [[ -n "$branch" ]]; then
+        command git-wt "$branch"
+      fi
     elif [[ "$1" == "-l" ]]; then
       # -l: Display only
       command git-wt
