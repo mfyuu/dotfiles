@@ -63,7 +63,7 @@ run = "networksetup -getmacaddress en0"
 
 [tasks.brew-dump-global]
 description = "brew bundle dump --global"
-run = "brew bundle dump -f --global"
+run = "brew bundle dump -f --no-go --file=~/.local/share/chezmoi/dot_Brewfile"
 
 [tasks.ssh-connect-github]
 description = "ssh connect github"
