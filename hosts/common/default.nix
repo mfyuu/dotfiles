@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   imports = [
     ./home-manager.nix
@@ -6,7 +6,12 @@
   ];
   # Determinate Nix manages the daemon, so disable nix-darwin's management
   nix.enable = false;
-  nixpkgs.config.allowUnfree = true;
+  # Allow only explicitly listed unfree packages (e.g. vscode)
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "vscode"
+    ];
   system.primaryUser = "mfyuu";
   system.stateVersion = 6;
 
