@@ -8,6 +8,8 @@
     ./vscode.nix
     ./cursor.nix
     ./karabiner.nix
+    ./claude.nix
+    ./codex.nix
   ];
   home.stateVersion = "25.11";
 }
