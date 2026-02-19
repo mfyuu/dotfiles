@@ -19,6 +19,7 @@
     }:
     let
       system = "aarch64-darwin";
+      pkgs = nixpkgs.legacyPackages.${system};
       mkDarwinConfig =
         { hostName }:
         nix-darwin.lib.darwinSystem {
@@ -36,5 +37,6 @@
     in
     {
       darwinConfigurations."M4Pro" = mkDarwinConfig { hostName = "M4Pro"; };
+      formatter.${system} = pkgs.nixfmt-tree;
     };
 }
