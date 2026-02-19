@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  xdg.configFile."zeno/config.yml".source = ../zeno-config.yml;
+  xdg.configFile."zeno/config.yml".source = ./zeno-config.yml;
 
   home.sessionPath = [
     "$HOME/bin"
