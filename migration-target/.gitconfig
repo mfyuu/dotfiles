@@ -1,0 +1,22 @@
+[user]
+	name = mfyuu
+	email = 83203852+mfyuu@users.noreply.github.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF+zJB91Fifv36IetC+AhWcBE+a9poI/U+A6MlLfABoa
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[core]
+	excludesfile = /Users/mfyuu/.gitignore_global
+[wt]
+	basedir = ../{gitroot}-worktrees
+	copyignored = true
+	copyuntracked = true
+	copymodified = true
+	hook = ni

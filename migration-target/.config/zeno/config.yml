@@ -1,0 +1,111 @@
+completions:
+  - name: mise run
+    patterns:
+      - "^mise run $"
+    sourceCommand: "mise tasks --json | jq -r '.[].name' | grep -v '^$'"
+    options:
+      --reverse: true
+  - name: aws cli completer
+    patterns:
+      - '^\s*aws(?:$|\s.*)$'
+    sourceCommand: 'COMP_LINE="${LBUFFER}${RBUFFER}" COMP_POINT=${#LBUFFER} aws_completer 2>/dev/null'
+    options:
+      --prompt: "'aws > '"
+  - name: git wt
+    patterns:
+      - "^git wt $"
+    sourceCommand: "git-wt | awk '{print $1}'"
+    options:
+      --prompt: "'worktree > '"
+
+snippets:
+  # git
+  - name: g
+    keyword: g
+    snippet: git
+
+  - name: ga
+    keyword: ga
+    snippet: git add
+
+  - name: gc
+    keyword: gc
+    snippet: git commit
+
+  - name: gp
+    keyword: gp
+    snippet: git push
+
+  - name: gst
+    keyword: gst
+    snippet: git status
+
+  - name: gco
+    keyword: gco
+    snippet: git checkout
+
+  - name: gs
+    keyword: gs
+    snippet: git switch
+
+  # git サブコマンドの略語（git の後で展開）
+  - name: git sw
+    keyword: sw
+    snippet: switch
+    context:
+      lbuffer: "^git "
+
+  - name: git push-f
+    keyword: push-f
+    snippet: push --force-with-lease
+    context:
+      lbuffer: "^git "
+
+  - name: git push-u
+    keyword: push-u
+    snippet: push -u origin HEAD
+    context:
+      lbuffer: "^git "
+
+  - name: git delete
+    keyword: delete
+    snippet: branch | fzf | xargs git branch -D
+    context:
+      lbuffer: "^git "
+
+  - name: git amend
+    keyword: amend
+    snippet: commit --amend
+    context:
+      lbuffer: "^git "
+
+  - name: git amend-n
+    keyword: amend-n
+    snippet: commit --amend --no-edit
+    context:
+      lbuffer: "^git "
+
+  # util
+  - name: move
+    keyword: move
+    snippet: git switch
+
+  - name: mdv
+    keyword: mdv
+    snippet: gh markdown-preview
+
+  - name: cc
+    keyword: cc
+    snippet: claude
+
+  - name: cs
+    keyword: cs
+    snippet: cursor
+
+  - name: warp
+    keyword: warp
+    snippet: open -a Warp
+
+  - name: ghostty
+    keyword: ghostty
+    snippet: open -a Ghostty

@@ -1,0 +1,84 @@
+[tools]
+aws-cli = "latest"
+bun = "latest"
+deno = "latest"
+gemini-cli = "latest"
+go = "latest"
+node = "24.10.0"
+"npm:@antfu/ni" = "latest"
+"npm:@aws-amplify/cli" = "latest"
+"npm:turbo" = "latest"
+"npm:ulid" = "latest"
+pnpm = "latest"
+yarn = "1.22.22"
+
+# [tasks.create-next-use-pnpm]
+# description = "next-pnpm"
+# run = "npx create-next-app@latest --use-pnpm"
+
+# [tasks.create-next-use-bun]
+# description = "next-bun"
+# run = "npx create-next-app@latest --use-bun"
+
+[tasks.cdk-init]
+description = "cdk"
+run = "cdk init app -l typescript"
+
+[tasks.aws-session]
+description = "aws-session"
+run = "aws sts get-caller-identity"
+
+[tasks.my-issues]
+description = "my-issues"
+run = "gh issue list -a @me"
+
+[tasks.review-requests]
+description = "review-requests"
+run = "gh pr list --search 'review-requested:@me'"
+
+[tasks."git-checkout-theirs"]
+description = "git checkout --theirs ."
+run = "git checkout --theirs ."
+
+[tasks."git-checkout-ours"]
+description = "git checkout --ours ."
+run = "git checkout --ours ."
+
+[tasks."claude-sync-mcp.json"]
+description = "claude sync mcp.json"
+run = "claude --mcp-config=.mcp.json"
+
+[tasks.check-memory-usage]
+description = "check memory usage"
+run = '''
+ps -axo pid,%cpu,%mem,rss,comm | sort -nrk 4 | head -n 10 | awk '{printf "%-6s %-6s %-6s %6.1fMB %s\n",$1,$2,$3,$4/1024,$5}'
+sysctl vm.swapusage
+'''
+
+[tasks.copy-current-branch]
+description = "copy-current-branch"
+run = "git branch --show-current | pbcopy"
+
+[tasks.get-mac-address]
+description = "get Mac Address"
+run = "networksetup -getmacaddress en0"
+
+[tasks.brew-dump-global]
+description = "brew bundle dump --global"
+run = "brew bundle dump -f --no-go --file=~/.local/share/chezmoi/dot_Brewfile"
+
+[tasks.lrp]
+description = "lambda remove-permission"
+usage = 'arg "<function_name>" help="Lambda function name"'
+run = "aws lambda remove-permission --function-name ${usage_function_name?} --statement-id FunctionURLAllowPublicAccess --region ap-northeast-1"
+
+[tasks.ssh-connect-github]
+description = "ssh connect github"
+run = "ssh -T git@github.com || true"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
+
+# miseでnodeをインストールするときに署名を無視する
+[settings.node]
+gpg_verify = false
