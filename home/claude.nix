@@ -9,6 +9,7 @@
     ".claude/commands/kiro.md".source = ./claude/commands/kiro.md;
     ".claude/skills/parallel-review/SKILL.md".source = ./claude/skills/parallel-review/SKILL.md;
     ".claude/skills/review-merge/SKILL.md".source = ./claude/skills/review-merge/SKILL.md;
-    ".claude/skills/web-design-guidelines/SKILL.md".source = ./claude/skills/web-design-guidelines/SKILL.md;
+    ".claude/skills/web-design-guidelines/SKILL.md".source =
+      ./claude/skills/web-design-guidelines/SKILL.md;
   };
 }

@@ -46,10 +46,11 @@ Based on `$ARGUMENTS`, collect and consolidate review files from the `.review/` 
 
 ## レビュアー凡例
 
-| 略称 | ファイル |
-|------|----------|
+| 略称  | ファイル        |
+| ----- | --------------- |
 | **A** | `filename-a.md` |
 | **B** | `filename-b.md` |
+
 ...
 
 ---
@@ -58,17 +59,19 @@ Based on `$ARGUMENTS`, collect and consolidate review files from the `.review/` 
 
 `-` = 言及なし
 
-| # | 指摘内容 | A | B | ... | 推奨 | 備考 |
-|---|---------|---|---|-----|------|------|
-| 1 | 指摘の要約 | Critical | - | ... | **High** | 補足情報 |
+| #   | 指摘内容   | A        | B   | ... | 推奨     | 備考     |
+| --- | ---------- | -------- | --- | --- | -------- | -------- |
+| 1   | 指摘の要約 | Critical | -   | ... | **High** | 補足情報 |
+
 ...
 
 ---
 
 ## レビュアー間の見解の違い
 
-| # | 論点 | 評価の分布 | 補足 |
-|---|------|-----------|------|
+| #   | 論点 | 評価の分布 | 補足 |
+| --- | ---- | ---------- | ---- |
+
 ...
 
 ---
@@ -76,16 +79,20 @@ Based on `$ARGUMENTS`, collect and consolidate review files from the `.review/` 
 ## マージ前対応の推奨（全レビュアーの合意ベース）
 
 ### 必須対応（過半数が High/Critical）
+
 1. ...
 
 ### 推奨対応（複数名が Medium 以上）
+
 1. ...
 
 ### フォローアップ（issue化推奨）
+
 1. ...
 ```
 
 **Rules:**
+
 - Consensus severity is determined by **majority vote**. In case of a tie, adopt the higher severity
 - Findings raised by only one reviewer must be labeled `**X独自**` (X = reviewer's letter)
 - The "Disagreements" section should only include findings where severity **differs by 2+ levels** or **mention/non-mention is split**
@@ -154,15 +161,16 @@ Based on `$ARGUMENTS`, collect and consolidate review files from the `.review/` 
 
 **Severity → Section Mapping:**
 
-| Consensus Severity | Comment Section |
-|---|---|
-| Critical | MUST |
-| High | MUST |
-| Middle | WANT or IMO (use judgment) |
-| Low | IMO or NITS (use judgment) |
-| — | ASK (regardless of severity; when clarification or confirmation is needed) |
+| Consensus Severity | Comment Section                                                            |
+| ------------------ | -------------------------------------------------------------------------- |
+| Critical           | MUST                                                                       |
+| High               | MUST                                                                       |
+| Middle             | WANT or IMO (use judgment)                                                 |
+| Low                | IMO or NITS (use judgment)                                                 |
+| —                  | ASK (regardless of severity; when clarification or confirmation is needed) |
 
 **Comment Style Rules:**
+
 - Place the corresponding **badge image** on the first line of the comment body (the line after file + line reference):
   - MUST: `![must-badge](https://img.shields.io/badge/Review-MUST-red.svg)`
   - ASK: `![ask-badge](https://img.shields.io/badge/Review-ASK-yellowgreen.svg)`
@@ -189,8 +197,8 @@ Below are output examples based on a fictional PR #462 (adding auth token refres
 
 ## レビュアー凡例
 
-| 略称 | ファイル |
-|------|----------|
+| 略称  | ファイル                  |
+| ----- | ------------------------- |
 | **A** | `pr462-review-01JQ3XK.md` |
 | **B** | `pr462-review-01JQ4YM.md` |
 | **C** | `pr462-review-01JQ5ZN.md` |
@@ -201,35 +209,38 @@ Below are output examples based on a fictional PR #462 (adding auth token refres
 
 `-` = 言及なし
 
-| # | 指摘内容 | A | B | C | 推奨 | 備考 |
-|---|---------|---|---|---|------|------|
-| 1 | リフレッシュトークンが localStorage に平文保存されている | Critical | Critical | High | **Critical** | 全員が指摘 |
-| 2 | トークン期限切れ時のリトライで無限ループの可能性 | High | High | - | **High** | C は言及なし |
-| 3 | `refreshToken()` の戻り値が未検証のまま使用 | Middle | High | Middle | **Middle** | B のみ High 評価 |
-| 4 | エラーハンドリングで元の例外情報が失われている | - | Middle | - | **B独自** | B のみの指摘 |
-| 5 | token の型定義が `string \| undefined` だが null チェックが不統一 | Low | Low | Low | **Low** | 全員一致 |
-| 6 | `MAX_RETRY_COUNT` がマジックナンバーのまま | - | - | Low | **C独自** | C のみの指摘 |
+| #   | 指摘内容                                                          | A        | B        | C      | 推奨         | 備考             |
+| --- | ----------------------------------------------------------------- | -------- | -------- | ------ | ------------ | ---------------- |
+| 1   | リフレッシュトークンが localStorage に平文保存されている          | Critical | Critical | High   | **Critical** | 全員が指摘       |
+| 2   | トークン期限切れ時のリトライで無限ループの可能性                  | High     | High     | -      | **High**     | C は言及なし     |
+| 3   | `refreshToken()` の戻り値が未検証のまま使用                       | Middle   | High     | Middle | **Middle**   | B のみ High 評価 |
+| 4   | エラーハンドリングで元の例外情報が失われている                    | -        | Middle   | -      | **B独自**    | B のみの指摘     |
+| 5   | token の型定義が `string \| undefined` だが null チェックが不統一 | Low      | Low      | Low    | **Low**      | 全員一致         |
+| 6   | `MAX_RETRY_COUNT` がマジックナンバーのまま                        | -        | -        | Low    | **C独自**    | C のみの指摘     |
 
 ---
 
 ## レビュアー間の見解の違い
 
-| # | 論点 | 評価の分布 | 補足 |
-|---|------|-----------|------|
-| 1 | localStorage への平文保存 | A: Critical / B: Critical / C: High | C は httpOnly Cookie への移行をフォローアップで可とする立場 |
+| #   | 論点                      | 評価の分布                          | 補足                                                        |
+| --- | ------------------------- | ----------------------------------- | ----------------------------------------------------------- |
+| 1   | localStorage への平文保存 | A: Critical / B: Critical / C: High | C は httpOnly Cookie への移行をフォローアップで可とする立場 |
 
 ---
 
 ## マージ前対応の推奨（全レビュアーの合意ベース）
 
 ### 必須対応（過半数が High/Critical）
+
 1. **#1** リフレッシュトークンの保存方法を httpOnly Cookie または暗号化に変更する
 2. **#2** リトライ上限を設け、超過時は明示的にログアウトフローへ遷移させる
 
 ### 推奨対応（複数名が Medium 以上）
+
 1. **#3** `refreshToken()` の戻り値を検証し、失敗時のフォールバックを追加する
 
 ### フォローアップ（issue化推奨）
+
 1. **#5** token 型の null/undefined チェックを統一する
 2. **#6** リトライ上限を定数として抽出する
 ```
@@ -259,11 +270,11 @@ localStorage.setItem("refresh_token", token);
 
 // After
 await cookieStore.set({
-  name: "refresh_token",
-  value: token,
-  httpOnly: true,
-  secure: true,
-  sameSite: "strict",
+name: "refresh_token",
+value: token,
+httpOnly: true,
+secure: true,
+sameSite: "strict",
 });
 `
 
@@ -278,26 +289,26 @@ await cookieStore.set({
 `ts
 // Before
 const refresh = async (): Promise<string> => {
-  try {
-    return await requestNewToken();
-  } catch {
-    return refresh(); // 無限ループの可能性
-  }
+try {
+return await requestNewToken();
+} catch {
+return refresh(); // 無限ループの可能性
+}
 };
 
 // After
 const MAX_RETRY = 3;
 
 const refresh = async (attempt = 0): Promise<string> => {
-  if (attempt >= MAX_RETRY) {
-    logout();
-    throw new AuthError("Token refresh failed after max retries");
-  }
-  try {
-    return await requestNewToken();
-  } catch {
-    return refresh(attempt + 1);
-  }
+if (attempt >= MAX_RETRY) {
+logout();
+throw new AuthError("Token refresh failed after max retries");
+}
+try {
+return await requestNewToken();
+} catch {
+return refresh(attempt + 1);
+}
 };
 `
 

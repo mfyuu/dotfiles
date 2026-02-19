@@ -2,6 +2,9 @@
 {
   programs.eza = {
     enable = true;
-    extraOptions = [ "--icons" "--git" ];
+    extraOptions = [
+      "--icons"
+      "--git"
+    ];
   };
 }
