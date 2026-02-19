@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./appstore.nix
     ./dock.nix
     ./finder.nix
     ./keyboard.nix
