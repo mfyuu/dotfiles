@@ -1,12 +1,5 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    deno
-    uv
-    gibo
-    less
-  ];
-
   xdg.configFile."zeno/config.yml".source = ../zeno-config.yml;
 
   home.sessionPath = [
@@ -18,7 +11,7 @@
     EDITOR = "vim";
     GH_PAGER = "less -RFX";
     PAGER = "less -RFX";
-    HOMEBREW_FORBIDDEN_FORMULAE = "node npm pnpm yarn claude";
+    HOMEBREW_FORBIDDEN_FORMULAE = "node npm pnpm yarn bun deno go awscli bat direnv eza fastfetch fd fzf gh lefthook mise starship turbo zoxide claude ripgrep";
     ZENO_HOME = "$HOME/.config/zeno";
   };
 
@@ -37,9 +30,6 @@
     initContent = ''
       # GPG_TTY (動的な値なのでsessionVariablesでは不可)
       export GPG_TTY=$TTY
-
-      # mise（zeno.zsh が Deno を使うため先に読み込む）
-      eval "$(mise activate zsh)"
 
       # brew補完 (gh等)
       if type brew &>/dev/null; then
@@ -85,11 +75,6 @@
       # fast-syntax-highlighting (zinit経由、最後に読み込み)
       zinit light zdharma-continuum/fast-syntax-highlighting
 
-      # uv/uvx/gibo 補完
-      eval "$(uv generate-shell-completion zsh)"
-      eval "$(uvx --generate-shell-completion zsh)"
-      eval "$(gibo completion zsh)"
-
       # カスタム関数
       tp() {
         if [ -z "$1" ]; then
@@ -110,22 +95,6 @@
           printf "Example: \e[90mmcd /path/to/your/directory\e[0m\n"
         else
           mkdir -p -- "$1" && cd -- "$1"
-        fi
-      }
-
-      # gibo dump をfzfで複数選択 → .gitignore に追記
-      function gibo() {
-        if [[ "$1" == "dump" && -z "$2" ]]; then
-          local selected
-          selected=$(command gibo list | sed 's/=== .* ===//g' | tr -s ' \t\n' '\n' | grep -v '^$' | \
-            fzf -m --preview 'gibo dump {}')
-          [[ -z "$selected" ]] && return
-
-          echo "$selected" | xargs gibo dump >> .gitignore
-          echo "$ gibo dump ''${selected//$'\n'/ } >> .gitignore"
-          echo "✓ Done"
-        else
-          command gibo "$@"
         fi
       }
 
