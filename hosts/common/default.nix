@@ -3,6 +3,7 @@
   imports = [
     ./home-manager.nix
     ./homebrew.nix
+    ./macos
   ];
   # Determinate Nix manages the daemon, so disable nix-darwin's management
   nix.enable = false;
