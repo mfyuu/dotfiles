@@ -9,6 +9,10 @@
     ./fzf.nix
   ];
 
+  programs.zsh.profileExtra = ''
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  '';
+
   home.sessionPath = [
     "$HOME/bin"
     "$HOME/.local/bin"
