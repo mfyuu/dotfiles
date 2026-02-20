@@ -37,6 +37,7 @@
     in
     {
       darwinConfigurations."M4Pro" = mkDarwinConfig { hostName = "M4Pro"; };
+      darwinConfigurations."M4Air" = mkDarwinConfig { hostName = "M4Air"; };
       formatter.${system} = pkgs.nixfmt-tree;
 
       apps.${system} = {
@@ -51,26 +52,27 @@
             ''
           );
         };
-
         switch = {
           type = "app";
           program = toString (
             pkgs.writeShellScript "darwin-switch" ''
               set -eo pipefail
-              echo "Building and switching to darwin configuration..."
-              sudo nix run nix-darwin -- switch --flake "$HOME/dev/dotfiles#M4Pro" |& ${pkgs.nix-output-monitor}/bin/nom
+              HOST_NAME=$(scutil --get LocalHostName)
+              echo "Building and switching to darwin configuration for $HOST_NAME..."
+              sudo nix run nix-darwin -- switch --flake "$HOME/dev/dotfiles#$HOST_NAME" |& ${pkgs.nix-output-monitor}/bin/nom
               echo "Done!"
             ''
           );
         };
-
+        
         build = {
           type = "app";
           program = toString (
             pkgs.writeShellScript "darwin-build" ''
               set -e
-              echo "Building darwin configuration..."
-              ${pkgs.nix-output-monitor}/bin/nom build "$HOME/dev/dotfiles#darwinConfigurations.M4Pro.system"
+              HOST_NAME=$(scutil --get LocalHostName)
+              echo "Building darwin configuration for $HOST_NAME..."
+              ${pkgs.nix-output-monitor}/bin/nom build "$HOME/dev/dotfiles#darwinConfigurations.$HOST_NAME.system"
               echo "Build successful! Run 'nix run .#switch' to apply."
             ''
           );
