@@ -64,7 +64,6 @@
             ''
           );
         };
-        
         build = {
           type = "app";
           program = toString (
