@@ -5,6 +5,7 @@
     onActivation = {
       cleanup = "zap";
       autoUpdate = true;
+      upgrade = true;
     };
     taps = [
       "dimentium/autoraise"
