@@ -4,32 +4,45 @@ macOS dotfiles managed with Nix flakes, nix-darwin, and home-manager.
 
 ## Initial Setup
 
-1. Install [Determinate Nix](https://github.com/DeterminateSystems/nix-installer):
+1. Install Xcode Command Line Tools and [Homebrew](https://brew.sh) (if not already installed):
+
+   ```bash
+   xcode-select --install
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+2. Install [Determinate Nix](https://github.com/DeterminateSystems/nix-installer) (if not already installed) [^1]:
 
    ```bash
    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
    ```
 
-2. Clone this repository:
+3. Clone this repository:
 
    ```bash
    git clone https://github.com/mfyuu/dotfiles.git ~/dev/dotfiles
    ```
 
-3. Apply the nix-darwin configuration (Homebrew will be installed automatically):
+4. Apply the nix-darwin configuration [^2] [^3]:
 
    ```bash
    # Replace <hostname> with your machine name (M4Pro, M4Air, etc.)
    sudo nix run nix-darwin -- switch --flake ~/dev/dotfiles#<hostname>
    ```
 
-4. Reload your shell:
+5. Reload your shell:
 
    ```bash
    exec zsh
    ```
 
+[^1]: The first run may fail. If it does, just run the same command again and it should succeed.
+[^2]: This sets `LocalHostName` and `ComputerName` via `scutil`, so it works as the initial hostname setup even if the machine has no custom hostname configured yet.
+[^3]: If Homebrew is not installed, the command will fail with an installation prompt. Install Homebrew first (see step 1), then re-run this command.
+
 ## Daily Usage
+
+Run these commands from the dotfiles directory (`~/dev/dotfiles`):
 
 ```bash
 # Update flake.lock (fetch latest nixpkgs, nix-darwin, home-manager)
@@ -41,3 +54,6 @@ nix run .#switch
 # Dry run (build without applying)
 nix run .#build
 ```
+
+> [!NOTE]
+> If running from outside the dotfiles directory, replace `.` with the path to the repository (e.g., `nix run ~/dev/dotfiles#update`).
