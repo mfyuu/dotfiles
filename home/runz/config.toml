@@ -1,0 +1,50 @@
+[tasks.cdk-init]
+description = "cdk"
+cmd = "cdk init app -l typescript"
+
+[tasks.aws-session]
+description = "aws-session"
+cmd = "aws sts get-caller-identity"
+
+[tasks.my-issues]
+description = "my-issues"
+cmd = "gh issue list -a @me"
+
+[tasks.review-requests]
+description = "review-requests"
+cmd = "gh pr list --search 'review-requested:@me'"
+
+[tasks."git-checkout-theirs"]
+description = "git checkout --theirs ."
+cmd = "git checkout --theirs ."
+
+[tasks."git-checkout-ours"]
+description = "git checkout --ours ."
+cmd = "git checkout --ours ."
+
+[tasks."claude-sync-mcp.json"]
+description = "claude sync mcp.json"
+cmd = "claude --mcp-config=.mcp.json"
+
+[tasks.check-memory-usage]
+description = "check memory usage"
+cmd = '''
+ps -axo pid,%cpu,%mem,rss,comm | sort -nrk 4 | head -n 10 | awk '{printf "%-6s %-6s %-6s %6.1fMB %s\n",$1,$2,$3,$4/1024,$5}'
+sysctl vm.swapusage
+'''
+
+[tasks.copy-current-branch]
+description = "copy-current-branch"
+cmd = "git branch --show-current | pbcopy"
+
+[tasks.get-mac-address]
+description = "get Mac Address"
+cmd = "networksetup -getmacaddress en0"
+
+[tasks.brew-dump-global]
+description = "brew bundle dump --global"
+cmd = "brew bundle dump -f --no-go --file=~/.local/share/chezmoi/dot_Brewfile"
+
+[tasks.ssh-connect-github]
+description = "ssh connect github"
+cmd = "ssh -T git@github.com || true"

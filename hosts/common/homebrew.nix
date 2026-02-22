@@ -10,10 +10,12 @@
     taps = [
       "dimentium/autoraise"
       "k1low/tap"
+      "mfyuu/tap"
     ];
     brews = [
       "create-dmg"
       "k1low/tap/git-wt"
+      "mfyuu/tap/runz"
     ];
     casks = [
       "1password"
@@ -31,7 +33,7 @@
       "font-udev-gothic-nf"
       "ghostty"
       "google-chrome"
-      "jordanbaird-ice"
+      "jordanbaird-ice@beta"
       "karabiner-elements"
       "logi-options+"
       "microsoft-office"
