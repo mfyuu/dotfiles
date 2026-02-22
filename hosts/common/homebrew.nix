@@ -15,7 +15,7 @@
     brews = [
       "create-dmg"
       "k1low/tap/git-wt"
-      "mfyuu/tap/runz"
+      "mfyuu/tap/muu"
     ];
     casks = [
       "1password"
