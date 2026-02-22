@@ -58,6 +58,8 @@
             pkgs.writeShellScript "darwin-switch" ''
               set -eo pipefail
               HOST_NAME=$(scutil --get LocalHostName)
+              echo "Updating Homebrew..."
+              /opt/homebrew/bin/brew update
               echo "Building and switching to darwin configuration for $HOST_NAME..."
               sudo nix run nix-darwin -- switch --flake "$HOME/dev/dotfiles#$HOST_NAME" |& ${pkgs.nix-output-monitor}/bin/nom
               echo "Done!"
