@@ -19,6 +19,7 @@
     ni
     turbo
     fastfetch
+    hyperfine
     lefthook
   ];
 }
