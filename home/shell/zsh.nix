@@ -68,6 +68,27 @@
     };
 
     initContent = lib.mkMerge [
+      # source command override for automatic zcompile
+      (lib.mkOrder 200 ''
+        function source {
+          ensure_zcompiled $1
+          builtin source $1
+        }
+        function ensure_zcompiled {
+          local compiled="$1.zwc"
+          if [[ -L "$1" ]]; then
+            [[ -r "$compiled" ]] && rm -f "$compiled"
+            return
+          fi
+          if [[ ! -r "$compiled" || "$1" -nt "$compiled" ]]; then
+            if [[ -w "''${1:h}" ]]; then
+              zcompile $1
+            fi
+          fi
+        }
+        ensure_zcompiled ~/.zshrc
+      '')
+
       # synchronous config (before sheldon)
       (lib.mkOrder 500 ''
         # GPG_TTY (dynamic value, cannot use sessionVariables)
@@ -142,6 +163,11 @@
         fi
         source "$sheldon_cache"
         unset sheldon_cache sheldon_toml
+      '')
+
+      # deferred cleanup: unfunction source override after all deferred operations
+      (lib.mkOrder 1500 ''
+        zsh-defer zsh-defer unfunction source
       '')
     ];
   };
