@@ -27,6 +27,29 @@
       [[ -o interactive ]] && alias cd='z'
       [[ -o interactive ]] && alias cdi='zi'
 
+      # custom functions
+      tp() {
+        if [ -z "$1" ]; then
+          printf "Command: \e[90mtp\e[0m\n"
+          printf "Description: \e[32mCreate a file and its parent directories in one step if they don't exist.\e[0m\n"
+          printf "Usage: \e[90mtp <file-path>\e[0m\n"
+          printf "Example: \e[90mtp /path/to/your/file.txt\e[0m\n"
+        else
+          mkdir -p -- "$(dirname -- "$1")" && touch -- "$1"
+        fi
+      }
+
+      mcd() {
+        if [ -z "$1" ]; then
+          printf "Command: \e[90mmcd\e[0m\n"
+          printf "Description: \e[32mCreate a directory and move into it in one step.\e[0m\n"
+          printf "Usage: \e[90mmcd <dir-name>\e[0m\n"
+          printf "Example: \e[90mmcd /path/to/your/directory\e[0m\n"
+        else
+          mkdir -p -- "$1" && cd -- "$1"
+        fi
+      }
+
       # History search with arrow keys
       autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
       zle -N up-line-or-beginning-search
