@@ -27,6 +27,12 @@
       [[ -o interactive ]] && alias cd='z'
       [[ -o interactive ]] && alias cdi='zi'
 
+      # completion options
+      zmodload -i zsh/complist
+      unsetopt menu_complete
+      setopt auto_menu complete_in_word always_to_end always_last_prompt auto_cd
+      zstyle ':completion:*:*:*:*:*' menu select
+
       # clear completion list on backspace
       function _backward-delete-char-clear() {
         zle backward-delete-char
