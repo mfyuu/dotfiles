@@ -130,6 +130,7 @@ in
         zsh-defer cache_eval "${zoxideBin} init zsh"
         zsh-defer cache_eval "${fzfBin} --zsh"
         zsh-defer cache_eval "${direnvBin} hook zsh"
+        zsh-defer cache_eval "COMPLETE=zsh muu"
       '')
 
       # deferred cleanup: unfunction source override after all deferred operations

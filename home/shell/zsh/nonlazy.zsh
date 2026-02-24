@@ -26,5 +26,12 @@ unsetopt menu_complete
 setopt auto_menu complete_in_word always_to_end always_last_prompt auto_cd
 zstyle ':completion:*:*:*:*:*' menu select
 
+# Zeno fallback: create a completion widget that bypasses FSH widget wrapping.
+# zle -C creates a "completion widget" (not a "user widget") that calls
+# _main_complete directly through the raw .expand-or-complete builtin.
+# This avoids the zeno → fzf → expand-or-complete → FSH → recursion loop.
+zle -C _zeno_safe_complete .expand-or-complete _main_complete
+export ZENO_COMPLETION_FALLBACK=_zeno_safe_complete
+
 # make word deletion stop at path separators
 WORDCHARS=""
