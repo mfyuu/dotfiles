@@ -2,6 +2,6 @@
 {
   programs.zoxide = {
     enable = true;
-    enableZshIntegration = true;
+    enableZshIntegration = false; # handled via cache_eval + zsh-defer in zsh.nix
   };
 }

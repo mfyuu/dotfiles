@@ -1,3 +1,17 @@
+# widget definitions (moved from nonlazy.zsh to reduce synchronous startup cost)
+function _backward-delete-char-clear() {
+  zle backward-delete-char
+  zle reset-prompt
+}
+zle -N _backward-delete-char-clear
+bindkey '^?' _backward-delete-char-clear
+
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
 # custom functions
 tp() {
   if [ -z "$1" ]; then

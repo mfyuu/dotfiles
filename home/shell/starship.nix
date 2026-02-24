@@ -2,7 +2,7 @@
 {
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
+    enableZshIntegration = false; # handled via cache_eval in zsh.nix
     settings = builtins.fromTOML (builtins.readFile ./starship.toml);
   };
 }

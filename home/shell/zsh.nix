@@ -1,4 +1,10 @@
-{ lib, ... }:
+{ lib, config, ... }:
+let
+  starshipBin = lib.getExe config.programs.starship.package;
+  zoxideBin = lib.getExe config.programs.zoxide.package;
+  fzfBin = lib.getExe config.programs.fzf.package;
+  direnvBin = lib.getExe config.programs.direnv.package;
+in
 {
   xdg.configFile = {
     "zeno/config.yml".source = ./zeno-config.yml;
@@ -112,6 +118,18 @@
         fi
         source "$sheldon_cache"
         unset sheldon_cache sheldon_toml
+      '')
+
+      # Tool integrations via cache_eval instead of enableZshIntegration.
+      # enableZshIntegration = true would inject `eval "$(cmd)"` which spawns a subprocess every startup.
+      # cache_eval caches the output to disk, and nix store paths in the command string serve as
+      # automatic cache keys — when a tool is updated via `nix run .#switch`, the path changes
+      # and the cache is regenerated.
+      (lib.mkOrder 900 ''
+        cache_eval "${starshipBin} init zsh"
+        zsh-defer cache_eval "${zoxideBin} init zsh"
+        zsh-defer cache_eval "${fzfBin} --zsh"
+        zsh-defer cache_eval "${direnvBin} hook zsh"
       '')
 
       # deferred cleanup: unfunction source override after all deferred operations
