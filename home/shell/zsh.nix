@@ -1,11 +1,48 @@
 { ... }:
 {
+  xdg.configFile."zeno/config.yml".source = ./zeno-config.yml;
+
+  programs.sheldon = {
+    enable = true;
+    enableZshIntegration = false;
+    settings = {
+      shell = "zsh";
+
+      plugins = {
+        "zeno" = {
+          github = "yuki-yano/zeno.zsh";
+          hooks.post = ''
+            bindkey ' ' zeno-auto-snippet
+            bindkey '^m' zeno-auto-snippet-and-accept-line
+            bindkey '^i' zeno-completion
+            bindkey '^r' zeno-history-selection
+            bindkey '^x^s' zeno-insert-snippet
+          '';
+        };
+
+        "omz" = {
+          github = "ohmyzsh/ohmyzsh";
+          dir = "plugins";
+          use = [ "{git,git-commit}/*.plugin.zsh" ];
+        };
+
+        "zsh-autosuggestions" = {
+          github = "zsh-users/zsh-autosuggestions";
+          hooks.post = ''
+            ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(zeno-auto-snippet-and-accept-line)
+          '';
+        };
+
+        "fast-syntax-highlighting" = {
+          github = "zdharma-continuum/fast-syntax-highlighting";
+        };
+      };
+    };
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
     shellAliases = {
       tree = "eza -T -a -I 'node_modules|.git|.cache' --icons";
       warp = "open -a Warp";
@@ -40,6 +77,18 @@
       }
       zle -N _backward-delete-char-clear
       bindkey '^?' _backward-delete-char-clear
+
+      # sheldon source cache (regenerate when plugins.toml symlink target changes)
+      sheldon_cache="''${XDG_CACHE_HOME:-$HOME/.cache}/sheldon/sheldon.zsh"
+      sheldon_toml="''${XDG_CONFIG_HOME:-$HOME/.config}/sheldon/plugins.toml"
+      if [[ ! -r "$sheldon_cache" || "$(readlink "$sheldon_toml")" != "$(cat "''${sheldon_cache}.lock" 2>/dev/null)" ]]; then
+        mkdir -p "''${sheldon_cache:h}"
+        sheldon lock
+        sheldon source > "$sheldon_cache"
+        readlink "$sheldon_toml" > "''${sheldon_cache}.lock"
+      fi
+      source "$sheldon_cache"
+      unset sheldon_cache sheldon_toml
 
       # custom functions
       tp() {
