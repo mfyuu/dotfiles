@@ -27,6 +27,14 @@
       [[ -o interactive ]] && alias cd='z'
       [[ -o interactive ]] && alias cdi='zi'
 
+      # clear completion list on backspace
+      function _backward-delete-char-clear() {
+        zle backward-delete-char
+        zle reset-prompt
+      }
+      zle -N _backward-delete-char-clear
+      bindkey '^?' _backward-delete-char-clear
+
       # custom functions
       tp() {
         if [ -z "$1" ]; then
