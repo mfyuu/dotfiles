@@ -84,6 +84,30 @@ jobs:
       - name: Disable git commit signing
         run: git config --global commit.gpgsign false
 
+      - name: Debug environment
+        run: |
+          HM_GEN="${{ steps.build.outputs.hm_gen }}"
+          export PATH="$HM_GEN/home-path/bin:$PATH"
+
+          echo "=== /etc/zshenv ==="
+          cat /etc/zshenv
+          echo "=== /etc/zprofile ==="
+          cat /etc/zprofile
+          echo "=== /etc/zshrc ==="
+          cat /etc/zshrc
+          echo "=== ~/.zshenv (resolved) ==="
+          cat "$(readlink ~/.zshenv)"
+          echo "=== cache_eval files ==="
+          ls -la ~/.cache/zsh/ 2>&1 || echo "no cache dir"
+          echo "=== zcompile .zwc files ==="
+          find ~/.cache -name "*.zwc" 2>/dev/null || echo "no .zwc files"
+          echo "=== env vars ==="
+          zsh -i -c 'echo "NIX_PROFILES=$NIX_PROFILES"; echo "PATH=$PATH"' 2>&1 | head -5
+          echo "=== warmup timing ==="
+          time zsh -i -c exit
+          time zsh -i -c exit
+          time zsh -i -c exit
+
       - name: Run benchmark
         run: |
           HM_GEN="${{ steps.build.outputs.hm_gen }}"
