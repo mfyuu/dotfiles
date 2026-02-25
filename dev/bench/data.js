@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771999078322,
+  "lastUpdate": 1771999449217,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -62,6 +62,37 @@ window.BENCHMARK_DATA = {
             "range": "7.05 ms",
             "unit": "ms",
             "extra": "median: 58.18 ms\nmin: 50.62 ms\nmax: 81.44 ms\nruns: 30"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "4158e9f0628713615463c66b3c7c44db8a6b223c",
+          "message": "fix(ci): keep /etc/zshenv for Nix PATH and create HISTFILE directory\n\n- Keep /etc/zshenv intact (provides nix-daemon.sh for Nix PATH setup)\n- Only clear /etc/zprofile (path_helper) and /etc/zshrc (compinit)\n- Create /Users/mfyuu directory for HISTFILE (hardcoded by home-manager)",
+          "timestamp": "2026-02-25T15:01:28+09:00",
+          "tree_id": "fdab28ba9683485161d3a208e82c99c3c265a1a6",
+          "url": "https://github.com/mfyuu/dotfiles/commit/4158e9f0628713615463c66b3c7c44db8a6b223c"
+        },
+        "date": 1771999448064,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 41.9,
+            "range": "4.28 ms",
+            "unit": "ms",
+            "extra": "median: 40.61 ms\nmin: 37.59 ms\nmax: 59.22 ms\nruns: 30"
           }
         ]
       }
