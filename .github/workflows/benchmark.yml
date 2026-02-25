@@ -5,6 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+concurrency:
+  group: benchmark
+  cancel-in-progress: false
+
 permissions:
   actions: write
   deployments: write
