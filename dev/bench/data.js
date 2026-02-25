@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772002856328,
+  "lastUpdate": 1772004319949,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -279,6 +279,37 @@ window.BENCHMARK_DATA = {
             "range": "2.85 ms",
             "unit": "ms",
             "extra": "median: 49.91 ms\nmin: 46.88 ms\nmax: 58.46 ms\nruns: 30"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "8830d7646f730102a2cb86e63c8f32b390076686",
+          "message": "refactor(ci): revert to determinate-nix-action and simplify benchmark\n\n- replace nix-installer-action + cache-nix-action with determinate-nix-action\n  (cache-nix-action's 1.17GB restore negated build time savings)\n- remove actions: write permission (no longer needed without cache purge)\n- remove workflow_dispatch trigger\n- increase benchmark runs from 30 to 50",
+          "timestamp": "2026-02-25T16:21:56+09:00",
+          "tree_id": "b24cec76b33953c1111d543dff1128331e563de9",
+          "url": "https://github.com/mfyuu/dotfiles/commit/8830d7646f730102a2cb86e63c8f32b390076686"
+        },
+        "date": 1772004319433,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 46.82,
+            "range": "5.62 ms",
+            "unit": "ms",
+            "extra": "median: 46.82 ms\nmin: 39.22 ms\nmax: 63.76 ms\nruns: 50"
           }
         ]
       }
