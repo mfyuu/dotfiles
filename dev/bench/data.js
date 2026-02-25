@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772002488284,
+  "lastUpdate": 1772002856328,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -248,6 +248,37 @@ window.BENCHMARK_DATA = {
             "range": "11 ms",
             "unit": "ms",
             "extra": "median: 40.06 ms\nmin: 36.41 ms\nmax: 82.64 ms\nruns: 30"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "53ae3cde6ce328ec76436844c1f7d118b3759f99",
+          "message": "chore(ci): add concurrency control to benchmark workflow",
+          "timestamp": "2026-02-25T15:57:50+09:00",
+          "tree_id": "b63b1dfd98a9d5005afba4fa78d1cb1c1091d20c",
+          "url": "https://github.com/mfyuu/dotfiles/commit/53ae3cde6ce328ec76436844c1f7d118b3759f99"
+        },
+        "date": 1772002855192,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 49.91,
+            "range": "2.85 ms",
+            "unit": "ms",
+            "extra": "median: 49.91 ms\nmin: 46.88 ms\nmax: 58.46 ms\nruns: 30"
           }
         ]
       }
