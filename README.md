@@ -37,7 +37,9 @@ macOS dotfiles managed with Nix flakes, nix-darwin, and home-manager.
    ```
 
 [^1]: The first run may fail. If it does, just run the same command again and it should succeed.
+
 [^2]: This sets `LocalHostName` and `ComputerName` via `scutil`, so it works as the initial hostname setup even if the machine has no custom hostname configured yet.
+
 [^3]: If Homebrew is not installed, the command will fail with an installation prompt. Install Homebrew first (see step 1), then re-run this command.
 
 ## Daily Usage
@@ -57,3 +59,12 @@ nix run .#build
 
 > [!NOTE]
 > If running from outside the dotfiles directory, replace `.` with the path to the repository (e.g., `nix run ~/dev/dotfiles#update`).
+
+## Benchmark
+
+Zsh startup time is continuously tracked in CI. Every push to main runs 50 iterations with [hyperfine](https://github.com/sharkdp/hyperfine) and records the results.
+
+https://bench.mfyuu.dev
+
+> [!NOTE]
+> These numbers are from GitHub Actions runners and may not reflect local performance. Use the trend to catch regressions, not as absolute measurements.
