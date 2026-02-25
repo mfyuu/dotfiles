@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772001534790,
+  "lastUpdate": 1772002488284,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -217,6 +217,37 @@ window.BENCHMARK_DATA = {
             "range": "4.83 ms",
             "unit": "ms",
             "extra": "median: 42.92 ms\nmin: 34.51 ms\nmax: 51.21 ms\nruns: 30"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "b9ba1d3cdcc06942981698843ba39e3566fd8823",
+          "message": "perf(ci): improve benchmark stability\n\n- use median instead of mean to reduce outlier impact\n- increase warmup from 5 to 10 runs",
+          "timestamp": "2026-02-25T15:51:46+09:00",
+          "tree_id": "94329de7ac6a3be651d70f55dbc3c81905ee8475",
+          "url": "https://github.com/mfyuu/dotfiles/commit/b9ba1d3cdcc06942981698843ba39e3566fd8823"
+        },
+        "date": 1772002487104,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 40.06,
+            "range": "11 ms",
+            "unit": "ms",
+            "extra": "median: 40.06 ms\nmin: 36.41 ms\nmax: 82.64 ms\nruns: 30"
           }
         ]
       }
