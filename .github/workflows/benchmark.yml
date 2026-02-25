@@ -30,6 +30,15 @@ jobs:
         run: |
           HM_GEN="${{ steps.build.outputs.hm_gen }}"
 
+          # Clear macOS default /etc/ files to match nix-darwin environment
+          # nix-darwin disables compinit/promptinit in /etc/zshrc and removes
+          # path_helper from /etc/zprofile (hosts/common/default.nix:19-23)
+          sudo sh -c '
+            echo "" > /etc/zshenv
+            echo "" > /etc/zshrc
+            echo "" > /etc/zprofile
+          '
+
           # Symlink user-level dotfiles
           ln -sf "$HM_GEN/home-files/.zshrc" ~/.zshrc
           ln -sf "$HM_GEN/home-files/.zshenv" ~/.zshenv
@@ -52,37 +61,11 @@ jobs:
           sheldon source > ~/.cache/sheldon/sheldon.zsh
           readlink ~/.config/sheldon/plugins.toml > ~/.cache/sheldon/sheldon.zsh.lock
 
+          # Warm up caches: cache_eval, zcompile (.zwc for sheldon.zsh)
+          zsh -i -c exit
+
       - name: Disable git commit signing
         run: git config --global commit.gpgsign false
-
-      - name: Debug environment
-        run: |
-          HM_GEN="${{ steps.build.outputs.hm_gen }}"
-          export PATH="$HM_GEN/home-path/bin:$PATH"
-
-          echo "=== /etc/zshenv ==="
-          cat /etc/zshenv 2>/dev/null || echo "(not found)"
-          echo ""
-          echo "=== /etc/zshrc ==="
-          cat /etc/zshrc 2>/dev/null || echo "(not found)"
-          echo ""
-          echo "=== /etc/zprofile ==="
-          cat /etc/zprofile 2>/dev/null || echo "(not found)"
-          echo ""
-          echo "=== cache_eval caches ==="
-          ls -la ~/.cache/zsh/ 2>/dev/null || echo "(no cache dir)"
-          echo ""
-          echo "=== zsh startup trace (top 20 slowest) ==="
-          zsh -i -c 'zprof' 2>/dev/null | head -20 || true
-          echo ""
-          echo "=== ZDOTDIR / NIX_PROFILES ==="
-          zsh -i -c 'echo "ZDOTDIR=$ZDOTDIR"; echo "NIX_PROFILES=$NIX_PROFILES"' 2>/dev/null || true
-          echo ""
-          echo "=== benchmark: bare zsh (no user config) ==="
-          hyperfine --warmup 3 --runs 10 'zsh --no-rcs -c exit'
-          echo ""
-          echo "=== benchmark: with /etc/ only (no user config) ==="
-          hyperfine --warmup 3 --runs 10 'zsh --no-rcs -c "source /etc/zshenv 2>/dev/null; source /etc/zshrc 2>/dev/null; exit"'
 
       - name: Run benchmark
         run: |
