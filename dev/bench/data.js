@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771999449217,
+  "lastUpdate": 1772000260337,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -93,6 +93,37 @@ window.BENCHMARK_DATA = {
             "range": "4.28 ms",
             "unit": "ms",
             "extra": "median: 40.61 ms\nmin: 37.59 ms\nmax: 59.22 ms\nruns: 30"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "afb4af1ea57b00c04d97832da12430c18750b448",
+          "message": "perf(ci): replace determinate-nix-action with nix-installer-action + cache-nix-action\n\n- switch to nix-installer-action@v21 for Nix installation only\n- add cache-nix-action@v7 to cache Nix store between CI runs\n- use flake.lock hash as cache key with prefix-based fallback\n- enable GC (5GB max) and purge (7 days unused) for storage management\n- add actions: write permission for cache purge API",
+          "timestamp": "2026-02-25T15:15:04+09:00",
+          "tree_id": "cd19eb1e0e93f0fa5a2d01953c81bdfb8d12924b",
+          "url": "https://github.com/mfyuu/dotfiles/commit/afb4af1ea57b00c04d97832da12430c18750b448"
+        },
+        "date": 1772000259753,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 67.02,
+            "range": "21.08 ms",
+            "unit": "ms",
+            "extra": "median: 63.5 ms\nmin: 40.15 ms\nmax: 118.22 ms\nruns: 30"
           }
         ]
       }
