@@ -96,6 +96,7 @@ jobs:
           name: Zsh Startup Time
           tool: customSmallerIsBetter
           output-file-path: benchmark-result.json
+          benchmark-data-dir-path: .
           github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: true
           alert-threshold: "150%"
