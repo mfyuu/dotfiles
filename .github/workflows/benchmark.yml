@@ -52,6 +52,9 @@ jobs:
           sheldon source > ~/.cache/sheldon/sheldon.zsh
           readlink ~/.config/sheldon/plugins.toml > ~/.cache/sheldon/sheldon.zsh.lock
 
+      - name: Disable git commit signing
+        run: git config --global commit.gpgsign false
+
       - name: Run benchmark
         run: |
           HM_GEN="${{ steps.build.outputs.hm_gen }}"
