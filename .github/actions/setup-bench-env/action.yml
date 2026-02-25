@@ -1,0 +1,62 @@
+name: Setup Benchmark Environment
+description: Install Nix, build home-manager generation, and set up shell environment for benchmarking
+
+outputs:
+  hm_gen:
+    description: Path to the home-manager generation
+    value: ${{ steps.build.outputs.hm_gen }}
+
+runs:
+  using: composite
+  steps:
+    - name: Install Nix
+      uses: DeterminateSystems/determinate-nix-action@v3
+
+    - name: Build home-manager generation
+      id: build
+      shell: bash
+      run: |
+        HM_GEN=$(nix build --no-link --print-out-paths \
+          '.#darwinConfigurations.M4Pro.config.home-manager.users.mfyuu.home.activationPackage')
+        echo "hm_gen=$HM_GEN" >> "$GITHUB_OUTPUT"
+
+    - name: Set up shell environment
+      shell: bash
+      run: |
+        HM_GEN="${{ steps.build.outputs.hm_gen }}"
+
+        # Replace macOS default /etc/ files to match nix-darwin environment.
+        # - /etc/zprofile: remove path_helper (slow PATH construction)
+        # - /etc/zshrc: remove compinit/promptinit (nix-darwin sets enableGlobalCompInit=false)
+        # - /etc/zshenv: keep Nix daemon setup for PATH
+        # See hosts/common/default.nix:19-23
+        sudo sh -c '
+          echo "" > /etc/zprofile
+          echo "" > /etc/zshrc
+        '
+
+        # Create /Users/mfyuu for HISTFILE (home-manager hardcodes home.homeDirectory)
+        sudo mkdir -p /Users/mfyuu
+        sudo chown "$(whoami)" /Users/mfyuu
+
+        # Symlink user-level dotfiles
+        ln -sf "$HM_GEN/home-files/.zshrc" ~/.zshrc
+        ln -sf "$HM_GEN/home-files/.zshenv" ~/.zshenv
+        ln -sf "$HM_GEN/home-files/.zprofile" ~/.zprofile
+
+        # Symlink .config directories
+        mkdir -p ~/.config
+        for item in "$HM_GEN/home-files/.config/"*; do
+          name=$(basename "$item")
+          rm -rf "$HOME/.config/$name"
+          ln -sf "$item" "$HOME/.config/$name"
+        done
+
+        # Add home-manager binaries to PATH
+        export PATH="$HM_GEN/home-path/bin:$PATH"
+
+        # Pre-populate sheldon cache (first run clones plugins via git)
+        mkdir -p ~/.cache/sheldon
+        sheldon lock
+        sheldon source > ~/.cache/sheldon/sheldon.zsh
+        readlink ~/.config/sheldon/plugins.toml > ~/.cache/sheldon/sheldon.zsh.lock
