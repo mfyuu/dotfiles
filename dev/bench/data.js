@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772001109465,
+  "lastUpdate": 1772001534790,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -186,6 +186,37 @@ window.BENCHMARK_DATA = {
             "range": "11.52 ms",
             "unit": "ms",
             "extra": "median: 52.39 ms\nmin: 36.88 ms\nmax: 81.98 ms\nruns: 30"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "98253d3297ec61b345afe912a64c1ec317ed55ed",
+          "message": "feat(ci): add workflow_dispatch without polluting benchmark graph\n\n- add manual trigger via workflow_dispatch\n- disable auto-push on manual runs to keep graph clean",
+          "timestamp": "2026-02-25T15:35:51+09:00",
+          "tree_id": "63767cba6ebe626cf5e3b05c89df786e346f0679",
+          "url": "https://github.com/mfyuu/dotfiles/commit/98253d3297ec61b345afe912a64c1ec317ed55ed"
+        },
+        "date": 1772001534281,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 41.59,
+            "range": "4.83 ms",
+            "unit": "ms",
+            "extra": "median: 42.92 ms\nmin: 34.51 ms\nmax: 51.21 ms\nruns: 30"
           }
         ]
       }
