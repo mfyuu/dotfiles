@@ -91,7 +91,7 @@ jobs:
           export PATH="$HM_GEN/home-path/bin:$PATH"
 
           hyperfine \
-            --warmup 5 \
+            --warmup 10 \
             --runs 30 \
             --export-json bench-result.json \
             'zsh -i -c exit'

@@ -9,7 +9,7 @@ output="${2:?Usage: convert-hyperfine.sh <input.json> <output.json>}"
 jq '[.results[] | {
   name: .command,
   unit: "ms",
-  value: ((.mean * 1000 * 100 | round) / 100),
+  value: ((.median * 1000 * 100 | round) / 100),
   range: ((.stddev * 1000 * 100 | round) / 100 | tostring + " ms"),
   extra: (
     "median: " + ((.median * 1000 * 100 | round) / 100 | tostring) + " ms\n" +
