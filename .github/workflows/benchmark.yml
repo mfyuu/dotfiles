@@ -30,14 +30,19 @@ jobs:
         run: |
           HM_GEN="${{ steps.build.outputs.hm_gen }}"
 
-          # Clear macOS default /etc/ files to match nix-darwin environment
-          # nix-darwin disables compinit/promptinit in /etc/zshrc and removes
-          # path_helper from /etc/zprofile (hosts/common/default.nix:19-23)
+          # Replace macOS default /etc/ files to match nix-darwin environment.
+          # - /etc/zprofile: remove path_helper (slow PATH construction)
+          # - /etc/zshrc: remove compinit/promptinit (nix-darwin sets enableGlobalCompInit=false)
+          # - /etc/zshenv: keep Nix daemon setup for PATH
+          # See hosts/common/default.nix:19-23
           sudo sh -c '
-            echo "" > /etc/zshenv
-            echo "" > /etc/zshrc
             echo "" > /etc/zprofile
+            echo "" > /etc/zshrc
           '
+
+          # Create /Users/mfyuu for HISTFILE (home-manager hardcodes home.homeDirectory)
+          sudo mkdir -p /Users/mfyuu
+          sudo chown "$(whoami)" /Users/mfyuu
 
           # Symlink user-level dotfiles
           ln -sf "$HM_GEN/home-files/.zshrc" ~/.zshrc
