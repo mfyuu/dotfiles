@@ -6,11 +6,32 @@ function _backward-delete-char-clear() {
 zle -N _backward-delete-char-clear
 bindkey '^?' _backward-delete-char-clear
 
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search
-bindkey "^[[B" down-line-or-beginning-search
+function _history-beginning-search-backward-end {
+  if [[ $BUFFER != "${_hbs_expected:-}" ]]; then
+    _hbs_prefix_len=$CURSOR
+  fi
+  CURSOR=$_hbs_prefix_len
+  zle .history-beginning-search-backward
+  CURSOR=$#BUFFER
+  _hbs_expected=$BUFFER
+  unset POSTDISPLAY
+}
+zle -N _history-beginning-search-backward-end
+
+function _history-beginning-search-forward-end {
+  if [[ $BUFFER != "${_hbs_expected:-}" ]]; then
+    _hbs_prefix_len=$CURSOR
+  fi
+  CURSOR=$_hbs_prefix_len
+  zle .history-beginning-search-forward
+  CURSOR=$#BUFFER
+  _hbs_expected=$BUFFER
+  unset POSTDISPLAY
+}
+zle -N _history-beginning-search-forward-end
+
+bindkey "^[[A" _history-beginning-search-backward-end
+bindkey "^[[B" _history-beginning-search-forward-end
 
 # custom functions
 tp() {
