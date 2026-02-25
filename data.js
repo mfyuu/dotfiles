@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772005382563,
+  "lastUpdate": 1772005658069,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -31,6 +31,37 @@ window.BENCHMARK_DATA = {
             "range": "6.48 ms",
             "unit": "ms",
             "extra": "median: 38.96 ms\nmin: 37.21 ms\nmax: 67.3 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "4dd71448e3663a58f6ca2e34aded1ef89e2d8e5e",
+          "message": "docs: add benchmark section to README",
+          "timestamp": "2026-02-25T16:44:54+09:00",
+          "tree_id": "8db9f9604ecb307fa3cddfdd74556c817c277803",
+          "url": "https://github.com/mfyuu/dotfiles/commit/4dd71448e3663a58f6ca2e34aded1ef89e2d8e5e"
+        },
+        "date": 1772005657156,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 44.69,
+            "range": "16.13 ms",
+            "unit": "ms",
+            "extra": "median: 44.69 ms\nmin: 35.74 ms\nmax: 119.95 ms\nruns: 50"
           }
         ]
       }
