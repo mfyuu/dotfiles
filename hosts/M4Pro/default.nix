@@ -8,7 +8,7 @@ in
     home.sessionVariables = {
       DENO_CERT = customCert;
       NODE_EXTRA_CA_CERTS = customCert;
+      GIT_SSL_CAINFO = customCert;
     };
-    programs.git.settings.http.sslCAInfo = customCert;
   };
 }
