@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772162828655,
+  "lastUpdate": 1772164146171,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -155,6 +155,37 @@ window.BENCHMARK_DATA = {
             "range": "4.19 ms",
             "unit": "ms",
             "extra": "median: 41.19 ms\nmin: 39.76 ms\nmax: 59.57 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "k.suzuki",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b14e393815e97ed1dc237298563a36efcc3a3843",
+          "message": "feat: migrate repo path from ~/dev/dotfiles to ~/.dotfiles (#9)",
+          "timestamp": "2026-02-27T12:45:50+09:00",
+          "tree_id": "ba7a78cffd93ad083ca9259281e9853200bad240",
+          "url": "https://github.com/mfyuu/dotfiles/commit/b14e393815e97ed1dc237298563a36efcc3a3843"
+        },
+        "date": 1772164144711,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 62.68,
+            "range": "16.96 ms",
+            "unit": "ms",
+            "extra": "median: 62.68 ms\nmin: 31.53 ms\nmax: 102.27 ms\nruns: 50"
           }
         ]
       }
