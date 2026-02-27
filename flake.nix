@@ -47,7 +47,7 @@
             pkgs.writeShellScript "flake-update" ''
               set -e
               echo "Updating flake.lock..."
-              nix flake update --flake "$HOME/dev/dotfiles"
+              nix flake update --flake "$HOME/.dotfiles"
               echo "Done! Run 'nix run .#switch' to apply changes."
             ''
           );
@@ -61,7 +61,7 @@
               echo "Updating Homebrew..."
               /opt/homebrew/bin/brew update
               echo "Building and switching to darwin configuration for $HOST_NAME..."
-              sudo nix run nix-darwin -- switch --flake "$HOME/dev/dotfiles#$HOST_NAME" |& ${pkgs.nix-output-monitor}/bin/nom
+              sudo nix run nix-darwin -- switch --flake "$HOME/.dotfiles#$HOST_NAME" |& ${pkgs.nix-output-monitor}/bin/nom
               echo "Done!"
             ''
           );
@@ -73,7 +73,7 @@
               set -e
               HOST_NAME=$(scutil --get LocalHostName)
               echo "Building darwin configuration for $HOST_NAME..."
-              ${pkgs.nix-output-monitor}/bin/nom build "$HOME/dev/dotfiles#darwinConfigurations.$HOST_NAME.system"
+              ${pkgs.nix-output-monitor}/bin/nom build "$HOME/.dotfiles#darwinConfigurations.$HOST_NAME.system"
               echo "Build successful! Run 'nix run .#switch' to apply."
             ''
           );

@@ -20,14 +20,14 @@ macOS dotfiles managed with Nix flakes, nix-darwin, and home-manager.
 3. Clone this repository:
 
    ```bash
-   git clone https://github.com/mfyuu/dotfiles.git ~/dev/dotfiles
+   git clone https://github.com/mfyuu/dotfiles.git ~/.dotfiles
    ```
 
 4. Apply the nix-darwin configuration [^2] [^3]:
 
    ```bash
    # Replace <hostname> with your machine name (M4Pro, M4Air, etc.)
-   sudo nix run nix-darwin -- switch --flake ~/dev/dotfiles#<hostname>
+   sudo nix run nix-darwin -- switch --flake ~/.dotfiles#<hostname>
    ```
 
 5. Reload your shell:
@@ -44,7 +44,7 @@ macOS dotfiles managed with Nix flakes, nix-darwin, and home-manager.
 
 ## Daily Usage
 
-Run these commands from the dotfiles directory (`~/dev/dotfiles`):
+Run these commands from the dotfiles directory (`~/.dotfiles`):
 
 ```bash
 # Update flake.lock (fetch latest nixpkgs, nix-darwin, home-manager)
@@ -58,7 +58,7 @@ nix run .#build
 ```
 
 > [!NOTE]
-> If running from outside the dotfiles directory, replace `.` with the path to the repository (e.g., `nix run ~/dev/dotfiles#update`).
+> If running from outside the dotfiles directory, replace `.` with the path to the repository (e.g., `nix run ~/.dotfiles#update`).
 
 ## Benchmark
 
