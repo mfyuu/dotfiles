@@ -84,13 +84,13 @@ N/A - [brief description of the purpose]
 
 ## Verification
 
-<!-- Check off completed verification steps -->
+<!--
+  Do NOT list items already verified by CI (tests, lint, type checks, etc.).
+  List manual verification steps that reviewers should actually confirm.
+  These should serve as acceptance criteria — if all are met, the PR can be approved.
+-->
 
-- [ ] Tests pass successfully
-- [ ] No lint/type errors
-- [ ] No breaking changes introduced
-- [ ] Changeset file created (if needed for version bump)
-<!-- Changesets are required when the changes affect the published package (new features, bug fixes, breaking changes). Not needed for internal tooling, docs, or config changes. -->
+- [ ] [Describe the expected behavior or manual verification step]
 
 ## Additional Notes
 
@@ -116,17 +116,19 @@ N/A - [brief description of the purpose]
   - Follow the examples in the template comments
 
 - **Verification section**:
-  - Check all applicable verification items
-  - Changeset files are required for published packages when:
-    - Adding new features
-    - Fixing bugs
-    - Making breaking changes
-  - Not needed for internal tooling, docs, or config changes
+  - Do not list items already verified by CI (tests, lint, type checks, etc.)
+  - List manual verification steps that reviewers should actually confirm
+  - All items should serve as acceptance criteria — if met, the PR can be approved
+  - Keep checkboxes unchecked (`- [ ]`)
 
 - **Additional Notes section**:
   - Include implementation details for complex changes
   - Add context that helps reviewers understand the approach
   - Mention any trade-offs or alternatives considered
+
+- **Verification in repository templates**:
+  - If the repository's PR template has a verification/confirmation section (e.g., "確認したこと", "Verification", "Checklist"), apply the same rules as the Verification section above
+  - Do not list CI-verified items — only include manual verification steps reviewers should confirm
 
 - **Language rule**:
   - Use the same language as the majority of recent commits

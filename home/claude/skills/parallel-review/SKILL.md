@@ -1,6 +1,6 @@
 ---
 name: parallel-review
-allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(git show:*), Bash(git status:*), Bash(git branch:*), Bash(gh pr:*), Bash(gh api:*), Bash(ulid), Bash(mkdir:*), Write(*), Read(*)
+allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(git show:*), Bash(git status:*), Bash(git branch:*), Bash(gh pr:*), Bash(gh api:*), Bash(bunx ulid), Bash(mkdir:*), Write(*), Read(*)
 argument-hint: [PR number | commit hash | range | "staged"]
 description: Four agents will conduct parallel reviews, which will then be merged.
 model: claude-opus-4-6
@@ -29,7 +29,7 @@ Auto-detect based on the content of `$ARGUMENTS`:
 | Empty or `staged`                | Staged changes | `git diff --staged` | `staged-{ulid}.md`       |
 
 1. Detect the mode using the rules above and run the corresponding command to get the diff
-2. Generate a ULID with the `ulid` command
+2. Generate a ULID with the `bunx ulid` command
 3. If the diff is empty, report "No diff to review" and stop
 
 ## Step 2: Parallel Review with 4 Agents

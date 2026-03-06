@@ -1,6 +1,6 @@
 ---
 name: review-merge
-allowed-tools: Bash(ulid), Bash(mkdir:*), Bash(ls:*), Write(*), Read(*), Glob(*)
+allowed-tools: Bash(bunx ulid), Bash(mkdir:*), Bash(ls:*), Write(*), Read(*), Glob(*)
 argument-hint: [prefix matching files in .review/]
 description: Merge multiple review files in .review/ into a consolidated summary and review comments
 model: claude-opus-4-6
@@ -30,7 +30,7 @@ Based on `$ARGUMENTS`, collect and consolidate review files from the `.review/` 
 
 ## Step 3: Output Two Files
 
-1. Generate a ULID using the `ulid` command
+1. Generate a ULID using the `bunx ulid` command
 2. Ensure the directory exists with `mkdir -p .review`
 3. Determine the prefix:
    - If `$ARGUMENTS` is provided: use it as-is for the prefix
