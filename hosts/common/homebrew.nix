@@ -27,6 +27,7 @@
       "claude-code"
       "codex"
       "cursor"
+      "dbeaver-community"
       "docker-desktop"
       "figma"
       "font-udev-gothic"
