@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772767262227,
+  "lastUpdate": 1772767803759,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -248,6 +248,37 @@ window.BENCHMARK_DATA = {
             "range": "10.94 ms",
             "unit": "ms",
             "extra": "median: 54.02 ms\nmin: 42.15 ms\nmax: 82.69 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "a59e5da0dd8724790100c4fc78fe2f9998fa9a79",
+          "message": "refactor(claude): update PR verification to focus on manual checks\n\n- change Verification section from CI checklist to acceptance criteria\n- remove auto-verified items (tests, lint, type checks) from template\n- add guidance for repository-specific verification sections\n- update parallel-review and review-merge to use `bunx ulid`",
+          "timestamp": "2026-03-06T12:17:42+09:00",
+          "tree_id": "0b7ba0303d45ee33a0279d583ff90821220a62bc",
+          "url": "https://github.com/mfyuu/dotfiles/commit/a59e5da0dd8724790100c4fc78fe2f9998fa9a79"
+        },
+        "date": 1772767802120,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 62.51,
+            "range": "27.72 ms",
+            "unit": "ms",
+            "extra": "median: 62.51 ms\nmin: 22.18 ms\nmax: 158.48 ms\nruns: 50"
           }
         ]
       }
