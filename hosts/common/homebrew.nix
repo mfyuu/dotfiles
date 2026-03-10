@@ -46,6 +46,7 @@
       "visual-studio-code"
       "warp"
       "zoom"
+      "aqua-voice"
     ];
   };
 }
