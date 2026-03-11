@@ -11,11 +11,13 @@
       "dimentium/autoraise"
       "k1low/tap"
       "mfyuu/tap"
+      "anomalyco/tap"
     ];
     brews = [
       "create-dmg"
       "k1low/tap/git-wt"
       "mfyuu/tap/muu"
+      "anomalyco/tap/opencode"
     ];
     casks = [
       "1password"

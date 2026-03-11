@@ -11,6 +11,7 @@
     yarn
     bun
     deno
+    fish
     # CLI tools
     awscli2
     bat
