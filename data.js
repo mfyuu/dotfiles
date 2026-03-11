@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773105918015,
+  "lastUpdate": 1773242219890,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -372,6 +372,37 @@ window.BENCHMARK_DATA = {
             "range": "14.88 ms",
             "unit": "ms",
             "extra": "median: 57.31 ms\nmin: 42.42 ms\nmax: 108.28 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "a94aca94cca839032e6b9bb74bb46bed33283e64",
+          "message": "chore: update flake dependencies and add fish shell\n\n- update home-manager and nixpkgs in flake.lock\n- add fish shell to home packages\n- add opencode tool from anomalyco/tap to homebrew",
+          "timestamp": "2026-03-12T00:13:48+09:00",
+          "tree_id": "a2fd68753554a0545c5c5eed535ab9fd87989935",
+          "url": "https://github.com/mfyuu/dotfiles/commit/a94aca94cca839032e6b9bb74bb46bed33283e64"
+        },
+        "date": 1773242218649,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 49.72,
+            "range": "15.11 ms",
+            "unit": "ms",
+            "extra": "median: 49.72 ms\nmin: 36.74 ms\nmax: 96.29 ms\nruns: 50"
           }
         ]
       }
