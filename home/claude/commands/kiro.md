@@ -1,6 +1,6 @@
 ---
 description: spec-driven development
-model: claude-opus-4-5-20251101
+model: claude-opus-4-6
 ---
 
 Claude Code を用いた spec-driven development を行います。

@@ -35,6 +35,8 @@
       "**/.claude/settings.local.json"
       "**/CLAUDE.local.md"
       "**/.serena/"
+      "**/.review/"
+      "**/.docs/"
     ];
   };
 }

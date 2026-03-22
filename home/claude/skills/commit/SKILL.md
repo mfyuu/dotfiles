@@ -2,7 +2,7 @@
 allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git branch:*), Bash(git commit:*)
 argument-hint: [additional explanation]
 description: Create a git commit
-model: claude-sonnet-4-5-20250929
+model: claude-sonnet-4-6
 ---
 
 ## Context

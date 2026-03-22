@@ -2,7 +2,7 @@
 allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git push:*), Bash(git branch:*), Bash(gh pr:*), Bash(gh repo:*)
 argument-hint: [additional context]
 description: Create a GitHub pull request
-model: claude-sonnet-4-5-20250929
+model: claude-sonnet-4-6
 ---
 
 ## Context
