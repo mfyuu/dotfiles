@@ -139,6 +139,11 @@ Overview of changes and overall observations (2-3 sentences)
 ```
 
 5. Report the output file path to the user
+6. Display the following message so the user can easily resume this session later:
+   ```
+   To resume this session later: /rename {ulid}
+   ```
+   Replace `{ulid}` with the actual ULID generated in Step 1.
 
 ## Important Notes
 

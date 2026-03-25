@@ -14,7 +14,9 @@ Based on `$ARGUMENTS`, collect and consolidate review files from the `.review/` 
 
 ## Step 1: Collect Files from `.review/`
 
-1. If `$ARGUMENTS` is provided, use it as a prefix to collect files matching `.review/{prefix}-*.md`
+1. If `$ARGUMENTS` is provided, normalize it to a prefix and collect matching files from `.review/`:
+   - Digits only or prefixed with `#` (e.g. `104`, `#104`) → prefix = `pr-{n}` → match `.review/pr-{n}-*.md`
+   - Otherwise → use as-is → match `.review/{prefix}-*.md`
 2. If `$ARGUMENTS` is empty, collect all `.review/*.md` files
 3. **If 0–1 files are found**: Report "Insufficient review files for merging (2 or more required)" and **stop**
 
@@ -344,3 +346,8 @@ return refresh(attempt + 1);
 - Always write output in **Japanese**
 - Create the `.review/` directory at the repository root
 - After output is complete, report the paths of both files to the user
+- Display the following message so the user can easily resume this session later:
+  ```
+  To resume this session later: /rename {ulid}
+  ```
+  Replace `{ulid}` with the actual ULID generated in Step 3.
