@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774414101841,
+  "lastUpdate": 1774414840633,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -496,6 +496,37 @@ window.BENCHMARK_DATA = {
             "range": "11.52 ms",
             "unit": "ms",
             "extra": "median: 63.35 ms\nmin: 47.4 ms\nmax: 102.94 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "11ca993de8fcc992dd293561ff25b037f2cc377c",
+          "message": "chore: update flake dependencies\n\n- add overlay to fix direnv 2.37.1 build (CGO_ENABLED mismatch in nixpkgs)",
+          "timestamp": "2026-03-25T13:57:52+09:00",
+          "tree_id": "1005420f38e4eb521d1075483ed20d54b0e352df",
+          "url": "https://github.com/mfyuu/dotfiles/commit/11ca993de8fcc992dd293561ff25b037f2cc377c"
+        },
+        "date": 1774414838923,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 43.28,
+            "range": "12.84 ms",
+            "unit": "ms",
+            "extra": "median: 43.28 ms\nmin: 36.45 ms\nmax: 93.26 ms\nruns: 50"
           }
         ]
       }
