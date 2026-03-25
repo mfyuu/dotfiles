@@ -7,6 +7,15 @@
   ];
   # Determinate Nix manages the daemon, so disable nix-darwin's management
   nix.enable = false;
+  # TODO: Remove this overlay once nixpkgs fixes direnv (CGO_ENABLED mismatch)
+  # Workaround: direnv 2.37.1 in nixpkgs uses -linkmode=external but sets CGO_ENABLED=0
+  nixpkgs.overlays = [
+    (final: prev: {
+      direnv = prev.direnv.overrideAttrs (old: {
+        env = (old.env or { }) // { CGO_ENABLED = "1"; };
+      });
+    })
+  ];
   # Allow only explicitly listed unfree packages (e.g. vscode)
   nixpkgs.config.allowUnfreePredicate =
     pkg:
