@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774223260194,
+  "lastUpdate": 1774414101841,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -465,6 +465,37 @@ window.BENCHMARK_DATA = {
             "range": "7.43 ms",
             "unit": "ms",
             "extra": "median: 58.91 ms\nmin: 50.65 ms\nmax: 85.37 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "b0f221f8f1dda9141cb62344ec3299209ab14b09",
+          "message": "feat(skills): improve parallel-review and review-merge skills\n\n- add session resume hint after parallel-review completes (shows /rename {ulid})\n- add session resume hint after review-merge completes (shows /rename {ulid})\n- normalize numeric/hash-prefixed arguments in review-merge to pr-{n} prefix",
+          "timestamp": "2026-03-25T13:29:28+09:00",
+          "tree_id": "d3966c7416072b3b7d2e9c1370fee198e95f2ec1",
+          "url": "https://github.com/mfyuu/dotfiles/commit/b0f221f8f1dda9141cb62344ec3299209ab14b09"
+        },
+        "date": 1774414099892,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 63.35,
+            "range": "11.52 ms",
+            "unit": "ms",
+            "extra": "median: 63.35 ms\nmin: 47.4 ms\nmax: 102.94 ms\nruns: 50"
           }
         ]
       }
