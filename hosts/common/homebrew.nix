@@ -26,7 +26,6 @@
       "arc"
       "dimentium/autoraise/autoraiseapp"
       "azookey"
-      "claude-code"
       "codex"
       "cursor"
       "dbeaver-community"
