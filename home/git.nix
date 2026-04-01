@@ -16,6 +16,7 @@
         email = "83203852+mfyuu@users.noreply.github.com";
       };
       init.defaultBranch = "main";
+      pull.ff = "only";
       push.autoSetupRemote = true;
       wt = {
         basedir = "../{gitroot}-worktrees";
