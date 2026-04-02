@@ -54,5 +54,9 @@
     "hono-skill@hono-skill": true,
     "swift-lsp@claude-plugins-official": true
   },
-  "language": "Japanese"
+  "language": "Japanese",
+  "env": {
+    "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1",
+    "CLAUDE_CODE_NO_FLICKER": "1"
+  }
 }
