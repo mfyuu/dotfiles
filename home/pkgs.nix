@@ -11,6 +11,7 @@
     yarn
     bun
     deno
+    uv
     fish
     # CLI tools
     awscli2
