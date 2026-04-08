@@ -12,6 +12,7 @@
       "k1low/tap"
       "mfyuu/tap"
       "anomalyco/tap"
+      "manaflow-ai/cmux"
     ];
     brews = [
       "create-dmg"
@@ -48,6 +49,7 @@
       "warp"
       "zoom"
       "aqua-voice"
+      "manaflow-ai/cmux/cmux"
     ];
   };
 }
