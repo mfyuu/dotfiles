@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775656410205,
+  "lastUpdate": 1775736595476,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -589,6 +589,37 @@ window.BENCHMARK_DATA = {
             "range": "7.3 ms",
             "unit": "ms",
             "extra": "median: 55.43 ms\nmin: 39.01 ms\nmax: 75.47 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "a9c6c2f1e2a458ca80b50c9d8b8b12e442d1c515",
+          "message": "chore(skills): fix .review/ output dir and allowed-tools in parallel-review and review-merge\n\n- resolve repository root via git rev-parse --show-toplevel instead of relative path to stabilize .review/ location in monorepos\n- add Bash(git rev-parse:*) to allowed-tools in both skills\n- add Agent to parallel-review allowed-tools to prevent permission prompts when spawning 4 parallel review agents",
+          "timestamp": "2026-04-09T21:06:35+09:00",
+          "tree_id": "d048d17a27876f26776aba8e79108fc679e3dd78",
+          "url": "https://github.com/mfyuu/dotfiles/commit/a9c6c2f1e2a458ca80b50c9d8b8b12e442d1c515"
+        },
+        "date": 1775736594308,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 49.47,
+            "range": "16.85 ms",
+            "unit": "ms",
+            "extra": "median: 49.47 ms\nmin: 40.06 ms\nmax: 89.27 ms\nruns: 50"
           }
         ]
       }
