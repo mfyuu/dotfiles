@@ -1,6 +1,6 @@
 ---
 name: review-merge
-allowed-tools: Bash(bunx ulid), Bash(mkdir:*), Bash(ls:*), Write(*), Read(*), Glob(*)
+allowed-tools: Bash(bunx ulid), Bash(mkdir:*), Bash(ls:*), Bash(git rev-parse:*), Write(*), Read(*), Glob(*)
 argument-hint: [prefix matching files in .review/]
 description: Merge multiple review files in .review/ into a consolidated summary and review comments
 model: claude-opus-4-6
@@ -14,11 +14,12 @@ Based on `$ARGUMENTS`, collect and consolidate review files from the `.review/` 
 
 ## Step 1: Collect Files from `.review/`
 
-1. If `$ARGUMENTS` is provided, normalize it to a prefix and collect matching files from `.review/`:
-   - Digits only or prefixed with `#` (e.g. `104`, `#104`) → prefix = `pr-{n}` → match `.review/pr-{n}-*.md`
-   - Otherwise → use as-is → match `.review/{prefix}-*.md`
-2. If `$ARGUMENTS` is empty, collect all `.review/*.md` files
-3. **If 0–1 files are found**: Report "Insufficient review files for merging (2 or more required)" and **stop**
+1. Determine the repository root: `REPO_ROOT=$(git rev-parse --show-toplevel)`
+2. If `$ARGUMENTS` is provided, normalize it to a prefix and collect matching files from `$REPO_ROOT/.review/`:
+   - Digits only or prefixed with `#` (e.g. `104`, `#104`) → prefix = `pr-{n}` → match `$REPO_ROOT/.review/pr-{n}-*.md`
+   - Otherwise → use as-is → match `$REPO_ROOT/.review/{prefix}-*.md`
+3. If `$ARGUMENTS` is empty, collect all `$REPO_ROOT/.review/*.md` files
+4. **If 0–1 files are found**: Report "Insufficient review files for merging (2 or more required)" and **stop**
 
 ## Step 2: Read All Files and Meta-Review
 
@@ -33,11 +34,11 @@ Based on `$ARGUMENTS`, collect and consolidate review files from the `.review/` 
 ## Step 3: Output Two Files
 
 1. Generate a ULID using the `bunx ulid` command
-2. Ensure the directory exists with `mkdir -p .review`
+2. Ensure the directory exists with `mkdir -p "$REPO_ROOT/.review"` (use the `$REPO_ROOT` determined in Step 1)
 3. Determine the prefix:
    - If `$ARGUMENTS` is provided: use it as-is for the prefix
    - If empty: use `all` as the prefix
-4. Write the following two files to `.review/`
+4. Write the following two files to `$REPO_ROOT/.review/`
 
 ---
 
@@ -344,7 +345,7 @@ return refresh(attempt + 1);
 ## Important Notes
 
 - Always write output in **Japanese**
-- Create the `.review/` directory at the repository root
+- Always resolve the repository root with `git rev-parse --show-toplevel` and create `.review/` there (do NOT use a relative path)
 - After output is complete, report the paths of both files to the user
 - Display the following message so the user can easily resume this session later:
   ```

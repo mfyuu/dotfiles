@@ -1,6 +1,6 @@
 ---
 name: parallel-review
-allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(git show:*), Bash(git status:*), Bash(git branch:*), Bash(gh pr:*), Bash(gh api:*), Bash(bunx ulid), Bash(mkdir:*), Write(*), Read(*)
+allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(git show:*), Bash(git status:*), Bash(git branch:*), Bash(git rev-parse:*), Bash(gh pr:*), Bash(gh api:*), Bash(bunx ulid), Bash(mkdir:*), Agent, Write(*), Read(*)
 argument-hint: [PR number | commit hash | range | "staged"]
 description: Four agents will conduct parallel reviews, which will then be merged.
 model: claude-opus-4-6
@@ -95,8 +95,8 @@ Collect results from all 4 agents and process:
 
 1. **Deduplicate**: Merge identical findings for the same file/line
 2. **Sort by severity**: Critical -> High -> Middle -> Low
-3. Create the `.review/` directory (`mkdir -p .review`)
-4. Write a Markdown file with the filename determined in Step 1, using the format below
+3. Determine the repository root: `REPO_ROOT=$(git rev-parse --show-toplevel)` and create the directory: `mkdir -p "$REPO_ROOT/.review"`
+4. Write a Markdown file to `$REPO_ROOT/.review/` with the filename determined in Step 1, using the format below
 
 ### Output Format (always in Japanese)
 
@@ -148,7 +148,7 @@ Overview of changes and overall observations (2-3 sentences)
 ## Important Notes
 
 - Review output is always written in Japanese
-- The `.review/` directory is created at the repository root
+- Always resolve the repository root with `git rev-parse --show-toplevel` and create `.review/` there (do NOT use a relative path)
 - Omit severity level sections that have no findings worth reporting
 - Avoid excessive reporting
 - When referencing files, always include line numbers (e.g. `file.ts:42-49`)
