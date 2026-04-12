@@ -48,7 +48,6 @@
       "visual-studio-code"
       "warp"
       "zoom"
-      "aqua-voice"
       "manaflow-ai/cmux/cmux"
     ];
   };
