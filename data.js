@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776039029410,
+  "lastUpdate": 1776039220788,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -682,6 +682,37 @@ window.BENCHMARK_DATA = {
             "range": "2.24 ms",
             "unit": "ms",
             "extra": "median: 41.66 ms\nmin: 36.9 ms\nmax: 47.91 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "27b08634a4ba9935112ce33e4e449f375ac5b5c8",
+          "message": "fix: pin nixpkgs to avoid vscode glibc evaluation error on darwin",
+          "timestamp": "2026-04-13T09:08:52+09:00",
+          "tree_id": "258a05b2e3332e085367225f08fe6ac7d34fedce",
+          "url": "https://github.com/mfyuu/dotfiles/commit/27b08634a4ba9935112ce33e4e449f375ac5b5c8"
+        },
+        "date": 1776039219584,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 38.25,
+            "range": "2.03 ms",
+            "unit": "ms",
+            "extra": "median: 38.25 ms\nmin: 35.97 ms\nmax: 48.27 ms\nruns: 50"
           }
         ]
       }
