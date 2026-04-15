@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776039220788,
+  "lastUpdate": 1776216594828,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -713,6 +713,37 @@ window.BENCHMARK_DATA = {
             "range": "2.03 ms",
             "unit": "ms",
             "extra": "median: 38.25 ms\nmin: 35.97 ms\nmax: 48.27 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "91454992805b9af663145fc968b907f916f1875e",
+          "message": "chore(claude): add model and outputStyle settings\n\n- set model to claude-sonnet-4-6 for explicit model pinning\n- add outputStyle as Explanatory for verbose response formatting",
+          "timestamp": "2026-04-15T10:26:21+09:00",
+          "tree_id": "4872e7ff46dbdd8122cb0de72793a9d6e3e46619",
+          "url": "https://github.com/mfyuu/dotfiles/commit/91454992805b9af663145fc968b907f916f1875e"
+        },
+        "date": 1776216593179,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 51.42,
+            "range": "13.68 ms",
+            "unit": "ms",
+            "extra": "median: 51.42 ms\nmin: 39.03 ms\nmax: 97.12 ms\nruns: 50"
           }
         ]
       }
