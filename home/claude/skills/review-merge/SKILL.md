@@ -30,6 +30,11 @@ Based on `$ARGUMENTS`, collect and consolidate review files from the `.review/` 
    - Compare each reviewer's severity assessment
    - Determine **consensus severity** by majority vote (in case of a tie, adopt the higher severity)
    - Identify **disagreements** between reviewers
+   - **Cross-reviewer line number verification**:
+     - When multiple reviewers cite DIFFERENT line numbers for the same logical finding, read the actual source file to determine the correct line
+     - When a finding refers to a named symbol (function / variable / component), grep the file with `Grep` to verify the cited line matches where that symbol is defined
+     - When reviewers converge on line numbers that look diff-proximal (i.e., clustered around changed lines) but the finding concerns a function definition or existing handler, verify independently — multiple reviewers can make the same mistake by all looking at the diff
+     - If the verified line differs from what reviewers cited, use the verified line in the output and silently correct
 
 ## Step 3: Output Two Files
 

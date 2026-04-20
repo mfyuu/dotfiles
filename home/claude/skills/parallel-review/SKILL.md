@@ -74,6 +74,13 @@ Review the following diff ONLY from the perspective of "{focus areas}".
 - Every finding MUST include rationale and a suggested fix
 - Do NOT over-report — the review itself should not be over-engineered
 
+## Line Number Accuracy Rules (Strict)
+- When citing `file.ts:N-M`, you MUST verify by reading the file that the cited line actually contains the code you're critiquing
+- If the fix location is OUTSIDE the diff (e.g., modifying an existing handler/function not shown in the diff), you MUST read the full file with the Read tool to find the accurate line number
+- Do NOT cite diff-adjacent lines as a proxy for the actual fix location
+- When referring to a function definition (e.g., "add a reset call to `handleMenuClose`"), cite the line WHERE THE FUNCTION IS DEFINED, not where it is called or where related state is manipulated
+- When referring to a variable's declaration, cite the `useState` / `const` / `let` line, not a usage site
+
 ## Output Format
 Output each finding in the following format (in Japanese):
 - Severity: Critical / High / Middle / Low
