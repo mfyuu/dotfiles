@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776877825307,
+  "lastUpdate": 1776878200681,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -806,6 +806,37 @@ window.BENCHMARK_DATA = {
             "range": "12.64 ms",
             "unit": "ms",
             "extra": "median: 62.46 ms\nmin: 41.81 ms\nmax: 105.57 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "3dd4c0d3af7c50666f8cec7a905545f4036488b3",
+          "message": "chore: update flake dependencies\n\n- bump home-manager to 936d579f53afa05fc2939c18541e4c9982421e0a",
+          "timestamp": "2026-04-23T02:04:31+09:00",
+          "tree_id": "4e88d0687900f2050dbfb01ce7582089e7a5f8c4",
+          "url": "https://github.com/mfyuu/dotfiles/commit/3dd4c0d3af7c50666f8cec7a905545f4036488b3"
+        },
+        "date": 1776878199321,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 69.57,
+            "range": "16.84 ms",
+            "unit": "ms",
+            "extra": "median: 69.57 ms\nmin: 44.22 ms\nmax: 140.29 ms\nruns: 50"
           }
         ]
       }
