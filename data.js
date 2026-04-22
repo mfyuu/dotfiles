@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776644839952,
+  "lastUpdate": 1776877825307,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -775,6 +775,37 @@ window.BENCHMARK_DATA = {
             "range": "9.06 ms",
             "unit": "ms",
             "extra": "median: 60.05 ms\nmin: 46.49 ms\nmax: 91.88 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "1ace628b0492ec495823c84e14256e7524118c3f",
+          "message": "chore(claude): refine skills and switch statusline\n\n- switch statusline from ccusage to ccstatusline with zero padding\n- add issue-start skill symlink in claude.nix\n- drop model pinning from commit and create-pr skills\n- require bullet-pointed body in every commit with no exceptions\n- add scope-language rule so Japanese scopes are allowed for Japanese commits and PRs\n- document HEREDOC quoting pitfalls and recommend `<<'EOF'` when messages contain backticks",
+          "timestamp": "2026-04-23T02:03:23+09:00",
+          "tree_id": "db92c5628c323733827341411de8f4a279676aa6",
+          "url": "https://github.com/mfyuu/dotfiles/commit/1ace628b0492ec495823c84e14256e7524118c3f"
+        },
+        "date": 1776877823868,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 62.46,
+            "range": "12.64 ms",
+            "unit": "ms",
+            "extra": "median: 62.46 ms\nmin: 41.81 ms\nmax: 105.57 ms\nruns: 50"
           }
         ]
       }
