@@ -2,7 +2,6 @@
 allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git push:*), Bash(git branch:*), Bash(gh pr:*), Bash(gh repo:*)
 argument-hint: [additional context]
 description: Create a GitHub pull request
-model: claude-sonnet-4-6
 ---
 
 ## Context
@@ -102,7 +101,9 @@ N/A - [brief description of the purpose]
 - **Title format**:
   - Follow the same convention as commit messages if applicable
   - Be descriptive but concise (max ~72 characters)
-  - Example: `feat(auth): Add user authentication with OAuth2`
+  - **Scope language matches the title language**: for Japanese PRs the scope may be written in Japanese; for English PRs keep the scope in English
+  - Example (English): `feat(auth): Add user authentication with OAuth2`
+  - Example (Japanese): `feat(認証): OAuth2 ログイン機能を追加`
 
 - **Issue section**:
   - Use `fixes #<number>` to automatically close related issues
@@ -136,6 +137,17 @@ N/A - [brief description of the purpose]
 
 - **Arguments rule**:
   - Treat `$ARGUMENTS` as additional context or instruction for the PRtitle/description
+
+## HEREDOC Handling for PR Body
+
+When composing the PR body with `gh pr create --body "$(cat <<...EOF ... EOF)"`, the HEREDOC quoting style affects how backticks are interpreted:
+
+- **Single-quoted HEREDOC (`<<'EOF'`)**: No shell expansion happens, so write raw backticks directly (both inline `` ` `` and fenced ```` ``` ````)
+- **Double-quoted or unquoted HEREDOC (`<<"EOF"` / `<<EOF`)**: Bash may try to interpret backticks as command substitution. Avoid inline single backticks — use triple-backtick fenced code blocks (```` ``` ````) instead
+
+**Rationale**: In double-quoted/unquoted HEREDOC, backticks sometimes get auto-escaped as `` \` ``, which breaks Markdown rendering on GitHub (the code block fails to display properly).
+
+**Recommendation**: Prefer `<<'EOF'` whenever the PR body contains backticks, code identifiers, or code blocks — it is the safest default.
 
 ## Important Notes
 
