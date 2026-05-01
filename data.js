@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776878200681,
+  "lastUpdate": 1777599666154,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -837,6 +837,37 @@ window.BENCHMARK_DATA = {
             "range": "16.84 ms",
             "unit": "ms",
             "extra": "median: 69.57 ms\nmin: 44.22 ms\nmax: 140.29 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "904f34fe29bbbb907f2dbd759b5e940fdbb57969",
+          "message": "feat(claude): add create-branch skill\n\n- add SKILL.md describing the `prefix/{issue-no}-summary` branch naming convention\n- classify input as issue reference, free-form description, or empty\n- fetch issue metadata via `gh issue view` to derive number, title, and prefix\n- map issue labels and Japanese keywords to Conventional Commits prefixes\n- generate English kebab-case slugs even for Japanese descriptions\n- confirm the proposed branch name via `AskUserQuestion` before creating\n- run pre-flight checks for name collision, working tree state, and base branch\n- register the new skill file in home/claude.nix",
+          "timestamp": "2026-05-01T10:37:35+09:00",
+          "tree_id": "1dcf88550a18d602dc2229d283b221ae965179fb",
+          "url": "https://github.com/mfyuu/dotfiles/commit/904f34fe29bbbb907f2dbd759b5e940fdbb57969"
+        },
+        "date": 1777599664593,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 36.66,
+            "range": "2.34 ms",
+            "unit": "ms",
+            "extra": "median: 36.66 ms\nmin: 36.22 ms\nmax: 45.7 ms\nruns: 50"
           }
         ]
       }
