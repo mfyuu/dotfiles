@@ -17,6 +17,7 @@
     brews = [
       "create-dmg"
       "k1low/tap/git-wt"
+      "k1low/tap/mo"
       "mfyuu/tap/muu"
       "anomalyco/tap/opencode"
     ];
