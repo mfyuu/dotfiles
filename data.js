@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1777599666154,
+  "lastUpdate": 1778722926960,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -868,6 +868,37 @@ window.BENCHMARK_DATA = {
             "range": "2.34 ms",
             "unit": "ms",
             "extra": "median: 36.66 ms\nmin: 36.22 ms\nmax: 45.7 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "13b8170e6deae3f61826e2563654fb5a0bd1bd9d",
+          "message": "chore(brew): add k1low/tap/mo",
+          "timestamp": "2026-05-14T10:32:36+09:00",
+          "tree_id": "b42817a20cbc304129c198666398c3b7a3246218",
+          "url": "https://github.com/mfyuu/dotfiles/commit/13b8170e6deae3f61826e2563654fb5a0bd1bd9d"
+        },
+        "date": 1778722925752,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 42.39,
+            "range": "12.5 ms",
+            "unit": "ms",
+            "extra": "median: 42.39 ms\nmin: 34.13 ms\nmax: 90.39 ms\nruns: 50"
           }
         ]
       }
